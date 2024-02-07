@@ -1,6 +1,6 @@
 <div align='center'>
 
-<h1>Knowledge of JavaScript's API</h1>
+<h1>Final Project - Javascript Advanced</h1>
 <p>A client-side web application that will help you to find your favourite book with its main information</p>
 
 <h4> <a href=https://app.netlify.com/sites/search4yourbook/overview>View Demo</a> <span> · </span> <a href="https://github.com/EliaGiolli/Project_Search4YourBook/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/EliaGiolli/Project_Search4YourBook/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/EliaGiolli/Project_Search4YourBook/issues"> Request Feature </a> </h4>
