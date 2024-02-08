@@ -5,12 +5,30 @@ import _get from 'lodash.get';
 import '../css/style.css';
 
 //event listener for the button 
-const buttonClick = document.getElementById('searchBtn');
+const buttonClick = document.getElementById('searchBtn').addEventListener('click', fetchBooks);
+
+//two functions for the loading animation
+
+//it sets the function showLoader to display the loader when loading
+function showLoader() {
+  const loader = document.getElementById('loader');
+  loader.style.display = 'block'; 
+}
+
+//it sets the function hideLoader to hide the loader when loading is done
+function hideLoader() {
+  const loader = document.getElementById('loader');
+  loader.style.display = 'none';
+}
 
 // Function for calling Open Library API with Axios
 async function fetchBooks() {
 
   try {
+
+    //call the function showLoader to display the loader
+    showLoader();
+
     const category = document.getElementById('genre').value.trim().toLowerCase().replace(/[\W_]/g, "");
     if (!category) {
       alert('Please enter a valid category');
@@ -68,6 +86,8 @@ async function fetchBooks() {
         });
 
       });
+      //call the function hideLoader to hide the loader after the end of the loading
+      hideLoader();
     } 
     } catch (error) {
     console.error('An error occurred while fetching books:', error);
@@ -93,6 +113,3 @@ async function fetchBookDescription(bookKey, bookDescriptionDiv) {
     console.error('An error occurred while fetching book description:', error);
   }
 }
-
-//calling the event at the click
-buttonClick.addEventListener('click', fetchBooks);
