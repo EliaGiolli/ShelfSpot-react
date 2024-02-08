@@ -11,7 +11,7 @@ const buttonClick = document.getElementById('searchBtn');
 async function fetchBooks() {
 
   try {
-    const category = document.getElementById('genre').value;
+    const category = document.getElementById('genre').value.trim().toLowerCase().replace(/[\W_]/g, "");
     if (!category) {
       alert('Please enter a valid category');
 
