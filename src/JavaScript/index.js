@@ -2,7 +2,7 @@
 import axios from "axios";
 import _ from "lodash";
 import _get from 'lodash.get';
-import '../src/style.css';
+import '../css/style.css';
 
 //event listener for the button 
 const buttonClick = document.getElementById('searchBtn');
@@ -14,10 +14,10 @@ async function fetchBooks() {
     const category = document.getElementById('genre').value;
     if (!category) {
       alert('Please enter a valid category');
+
       return;
     }
     const url = 'https://openlibrary.org/subjects/' + category + '.json';
-    // Declared 3 variables: one for the category, one for the books and one for the response of the category
     const response = await axios.get(url);
     let books = response.data.works;
     let resultsContainer = document.getElementById('resultsContainer');
