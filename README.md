@@ -1,89 +1,118 @@
-<div align='center'>
+# 📚 Search4YourBook
 
-<h1>Final Project - Javascript Advanced</h1>
-<p>A client-side web application that will help you to find your favourite book with its main information</p>
+Search4YourBook è un'applicazione web che consuma l'API esterna di **OpenAILibrary** per mostrare un elenco di libri in base al genere selezionato dall'utente. L'app è sviluppata con **React**, **React Router v7** e **Tailwind CSS**.
 
-<h4> <a href=https://app.netlify.com/sites/search4yourbook/overview>View Demo</a> <span> · </span> <a href="https://github.com/EliaGiolli/Project_Search4YourBook/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/EliaGiolli/Project_Search4YourBook/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/EliaGiolli/Project_Search4YourBook/issues"> Request Feature </a> </h4>
+---
 
+## 🚀 Funzionalità
+- Ricerca libri in base al genere
+- Visualizzazione dell'elenco di libri corrispondenti
+- Pagina dei dettagli di un libro con descrizione e altre informazioni
 
-</div>
+---
 
-# :notebook_with_decorative_cover: Table of Contents
+## 🛠️ Tecnologie utilizzate
+- ⚛️ **React** - Libreria per costruire l'interfaccia utente
+- 🏗️ **React Router v7** - Gestione della navigazione tra le pagine
+- 🎨 **Tailwind CSS** - Stile moderno e responsive
+- 🌍 **OpenAILibrary API** - Fonte dei dati sui libri
 
-- [About the Project](#star2-about-the-project)
-- [Acknowledgements](#gem-acknowledgements)
+---
 
+## 📦 Installazione e Avvio
+1. **Clonare il repository**
+   ```sh
+   git clone https://github.com/tuo-username/Search4YourBook.git
+   cd Search4YourBook
+   ```
+2. **Installare le dipendenze**
+   ```sh
+   npm install
+   ```
+3. **Avviare il server di sviluppo**
+   ```sh
+   npm run dev
+   ```
+4. Aprire il browser su `http://localhost:5173/` (se usi Vite) oppure `http://localhost:3000/` (se usi CRA)
 
-## :star2: About the Project
+---
 
-### :dart: Features
-- Open Library AI
-- JavaScript libraries Axios and Lodash
-- Webpack
+## 🔄 Comandi Git Utili
+Ecco alcuni comandi Git utili per gestire il progetto:
 
+- **Inizializzare un repository Git (se non è già stato fatto)**
+  ```sh
+  git init
+  ```
+- **Aggiungere tutti i file al commit**
+  ```sh
+  git add .
+  ```
+- **Creare un commit con un messaggio**
+  ```sh
+  git commit -m "Messaggio del commit"
+  ```
+- **Inviare le modifiche al repository remoto**
+  ```sh
+  git push origin main
+  ```
+- **Aggiornare il progetto con le ultime modifiche dal repository remoto**
+  ```sh
+  git pull origin main
+  ```
+  
+## 📖 API Utilizzata
+L'app si connette all'API **OpenAILibrary**, che fornisce dati sui libri in formato JSON.
 
-### :art: Color Reference
-| Color | Hex |
-| --------------- | ---------------------------------------------------------------- |
-| Primary Color | ![#ad5f16](https://via.placeholder.com/10/ad5f16?text=+) #ad5f16 |
-| Secondary Color | ![#ffd699](https://via.placeholder.com/10/ffd699?text=+) #ffd699 |
-| Accent Color | ![#ffffc80](https://via.placeholder.com/10/ffffc80?text=+) #ffffc80 |
-| Text Color | ![#333333](https://via.placeholder.com/10/333333?text=+) #333333 |
-
-## :toolbox: Getting Started
-
-### :bangbang: Prerequisites
-
-- Install Node JS in your computer
-- Basic Knowledge of HTML, CSS and Javascript
-
-
-### :gear: Installation
-
-This project uses Webpack as bundler
-```bash
-npm install webpack webpack-cli --save-dev
+Esempio di richiesta:
+```sh
+GET https://api.openailibrary.com/books?genre=Fantasy
 ```
-installation of node_modules
-```bash
-npm install
+Esempio di risposta:
+```json
+[
+  {
+    "id": 1,
+    "title": "Il Signore degli Anelli",
+    "author": "J.R.R. Tolkien",
+    "description": "Un'epica storia fantasy..."
+  }
+]
 ```
 
+---
 
-### :test_tube: Running Tests
-
-To run tests, run the following command
-```bash
-npm run start
+## 🔧 Struttura del Progetto
+```
+Search4YourBook/
+│── src/
+│   ├── components/   # Componenti UI
+│   ├── pages/        # Pagine dell'app
+│   ├── routes/       # Configurazione delle rotte
+│   ├── styles/       # File CSS (Tailwind)
+│   ├── App.jsx       # Componente principale
+│   ├── main.jsx      # Punto di ingresso
+│── public/
+│── package.json
+│── README.md
 ```
 
+---
 
-### :running: Run Locally
+## 🛠️ Possibili Miglioramenti
+- Aggiungere un sistema di **paginazione**
+- Implementare un **sistema di preferiti** per salvare libri
+- Integrare una funzione di **autocompletamento** nella ricerca
 
-Clone the project
+---
 
-```bash
-https://github.com/EliaGiolli/Project_Search4YourBook
-```
-Go to the project directory
-```bash
-cd progetto_js_advanced
-```
-Install dependencies
-```bash
-npm install
-```
-Start the server
-```bash
-npm run start
-```
+## 📝 Licenza
+Questo progetto è rilasciato sotto la licenza MIT.
 
+---
 
-## :gem: Acknowledgements
+## 👨‍💻 Autore
+**Il tuo nome o username GitHub**
+- GitHub: [@tuo-username](https://github.com/EliaGiolli)
+- LinkedIn: [Il tuo profilo](https://www.linkedin.com/in/eliagiolli/)
 
-Use this section to mention useful resources and libraries that you have used in your projects.
-
-- [Axios](https://www.npmjs.com/package/axios)
-- [Open Library API](https://openlibrary.org/developers/api)
-- [Lodash](https://lodash.com/)
-- [Webpack](https://webpack.js.org/concepts/)
