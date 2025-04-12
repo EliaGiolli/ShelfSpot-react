@@ -8,7 +8,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <SearchBookDiv />
+      <main className='bg-orange-50 h-[1200px]'>
+        <SearchBookDiv />
+      </main>
     </>
   )
 }
