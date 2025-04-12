@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useFetch } from '../custom hooks/useFetchBook';
+import { Books } from '../utils/book';
 
 // Aggiungi questa interfaccia all'inizio del file
 function SearchBookDiv() {
@@ -25,7 +26,7 @@ function SearchBookDiv() {
       {loading && <p className='bg-orange-200 text-orange-900 p-2'>Loading...</p>}
       {error && <p className='bg-red-100 text-red-700 p-2'>{error}</p>}
       <div className='grid grid-cols-4 gap-4 max-h-[500px] mt-5'>
-        {books.length > 0 && books.slice(0,20).map((book: any) => (
+        {books.length > 0 && books.slice(0,20).map((book: Books) => (
           <div key={book.key} className="mb-4 p-2 border-b border-white text-white">
             <h3 className="font-bold">{book.title}</h3>
             <p>Author: {book.author ? book.author.join(', ') : 'Unknown'}</p>
