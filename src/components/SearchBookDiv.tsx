@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useFetch } from '../custom hooks/useFetchBook';
-import { Books } from '../utils/book';
+import { Books } from '../types/book';
 
 // Aggiungi questa interfaccia all'inizio del file
 function SearchBookDiv() {
