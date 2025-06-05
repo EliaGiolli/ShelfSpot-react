@@ -1,0 +1,32 @@
+
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Luca",
+            "lastName": "Rossi",
+            "email": "lucarossi@hotmail.it",
+            "password": "passwordEfficace",
+            "role": "guest"
+        },
+        {
+            "id": 2,
+            "name": "Mario",
+            "lastName": "Bianchi",
+            "email": "mariucciobianchi56@virgilio.it",
+            "password": "passwordMoltoEfficace",
+            "role": "member"
+        }
+    ],
+    "loans":[
+        {
+            "id": "1",
+            "userId": "1",
+            "nome": "Mario",
+            "lastName":"Strurniolo",
+            "bookId": "10",
+            "borrowDate": "2025-06-01T10:00:00Z",
+            "dueDate": "2025-06-15T10:00:00Z"
+        }
+    ]
+}
