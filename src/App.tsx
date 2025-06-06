@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar'
-import SearchBookDiv from './components/SearchBookDiv'
+import SearchBookDiv from './pages/SearchBookDiv'
 
 
 
