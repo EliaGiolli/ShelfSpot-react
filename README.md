@@ -1,4 +1,6 @@
-# 📚 Search4YourBook
+UNDER REFACTORING. 
+
+# 📚 ShelfSpost
 
 Search4YourBook è un'applicazione web che consuma l'API esterna di **OpenAILibrary** per mostrare un elenco di libri in base al genere selezionato dall'utente. L'app è sviluppata con **React**, **TypeScript** e **Tailwind CSS v4**.
 
