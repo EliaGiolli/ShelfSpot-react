@@ -1,16 +1,11 @@
-import Navbar from './components/Navbar'
-import SearchBookDiv from './pages/SearchBookDiv'
-
-
+import { RouterProvider } from "react-router-dom"
+import { router } from "./router/router"
 
 function App() {
 
   return (
     <>
-      <Navbar />
-      <main className='bg-orange-50 h-[1200px]'>
-        <SearchBookDiv />
-      </main>
+      <RouterProvider router={router} />
     </>
   )
 }

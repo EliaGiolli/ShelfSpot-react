@@ -16,7 +16,7 @@ export function useFetch(searchTerm:string | number){
     
       async function fetchData(){
         try {
-          const response = await axios.get(`https://openlibrary.org/search.json?q=${searchTerm}`);
+          const response = await axios.get(`/api/search.json?q=${searchTerm}`);
           setBooks(response.data.docs);
           console.log(response.data.docs);
         } catch(err:any) {

@@ -1,8 +1,14 @@
-
+import Navbar from "../components/Navbar"
+import { Outlet } from "react-router"
 
 function MainLayout() {
   return (
-    <div>MainLayout</div>
+    <>
+      <Navbar />
+      <main className="bg-orange-100 min-h-screen flex flex-col">
+       <Outlet />
+      </main>
+    </>
   )
 }
 
