@@ -1,4 +1,8 @@
-import { createBrowserRouter, redirect } from 'react-router-dom'
+import { 
+    createBrowserRouter, 
+    Navigate, 
+    redirect 
+} from 'react-router-dom'
 import Login from '../pages/Login'
 import Register from '../pages/Register';
 import AuthLayout from '../layouts/AuthLayout';
@@ -15,6 +19,7 @@ export const router = createBrowserRouter([
         path: '/',
         element: <AuthLayout />,
         children: [
+            { index: true, element: <Navigate to='login' replace/> },
             {
                 path: 'login',
                 element: <Login />,
