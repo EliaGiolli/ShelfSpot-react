@@ -7,6 +7,7 @@ function Register() {
     <div className="flex items-center justify-center min-h-screen bg-amber-50 p-6">
       <Form.Root
         className="w-full max-w-md bg-white rounded-xl shadow-lg p-8"
+        method="GET"
         onSubmit={(e) => {
           e.preventDefault();
           // handle login logic here
