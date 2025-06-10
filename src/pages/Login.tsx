@@ -1,17 +1,41 @@
 //since I use many component, I import them as a single object with *
 import * as Form from "@radix-ui/react-form";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
+
+import { userLogin } from "../features/auth/authReducer";
+import { RegisterFormData } from "../types/formData";
+import { useAppDispatch } from "../custom hooks/useAppDispatch";
 
 function Login() {
+
+  //Redirecting the user to the homepage 
+  const navigate = useNavigate();
+  //dispatch function from redux toolkit
+  const dispatch = useAppDispatch();
+  //form logic from react hook form
+  const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormData>();
+  //connection to the mock rest API to handle login
+  const onSubmit = async (data: RegisterFormData) => {
+
+    const redirect = await dispatch(userLogin(data));
+
+    if( userLogin.fulfilled.match(redirect) ){
+      //successful login
+      navigate('/home');
+    }else{
+      console.error('login failed:', redirect.payload);
+    }
+  }
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-amber-50 p-6">
       <Form.Root
         className="w-full max-w-md bg-white rounded-xl shadow-lg p-8"
         method="GET"
-        onSubmit={(e) => {
-          e.preventDefault();
-          // handle login logic here
-        }}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-3xl font-semibold mb-8 text-gray-900">Log In</h2>
 
@@ -31,8 +55,18 @@ function Login() {
               type="email"
               required
               placeholder="you@example.com"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /\S+@\S+\.\S+/,
+                  message: "Invalid email",
+                },
+              })}
             />
           </Form.Control>
+          { errors.email && (
+            <span className="text-sm text-red-600 bg-red-100 p-3">{ errors.email.message }</span>
+          )}
         </Form.Field>
 
         <Form.Field className="mb-6" name="password">
@@ -49,8 +83,18 @@ function Login() {
               required
               minLength={6}
               placeholder="••••••••"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Min 6 characters",
+                },
+              })}
             />
           </Form.Control>
+          {errors.password && (
+            <span className="text-sm text-red-600 bg-red-100 p-3">{ errors.password.message }</span>
+          )}
         </Form.Field>
 
         <Form.Submit asChild>
@@ -64,7 +108,7 @@ function Login() {
          <p className="mt-4 text-center text-gray-700">
           You don't have an account?{' '}
           <Link to="/register" className="text-amber-600 hover:underline font-semibold">
-            Register now
+           Register now
           </Link>
         </p>
 
