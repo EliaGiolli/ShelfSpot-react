@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-import { RegisterFormData, AuthState } from "../../types/formData";
+import { userRole } from "../../types/userDataTypes";
+import { RegisterFormData, LoginFormData, AuthState } from "../../types/formData";
 
 
 const initialState: AuthState = {
@@ -29,23 +29,79 @@ export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData: RegisterFormData, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:5000/users", userData);
-      return response.data;
+      // Register the user with json-server-auth
+      const response = await axios.post("http://localhost:5000/register", {
+        email: userData.email,
+        password: userData.password,
+        name: userData.name,
+        lastName: userData.lastName,
+        role: userRole.Guest
+      });
+      
+      if (response.data && response.data.accessToken) {
+        return {
+          user: {
+            id: Date.now(),
+            name: userData.name,
+            lastName: userData.lastName,
+            email: userData.email,
+            password: userData.password,
+            role: userRole.Guest
+          },
+          token: response.data.accessToken
+        };
+      }
+      
+      throw new Error('Registration failed - no token received');
     } catch (error: any) {
-      return rejectWithValue(error.response?.data || error.message);
+      console.error('Registration error:', error.response?.data || error.message);
+      return rejectWithValue(
+        error.response?.data?.message || 
+        error.message || 
+        'Registration failed'
+      );
     }
   }
 );
 
 export const userLogin = createAsyncThunk(
   'auth/loginUser',
-  async ( credentials: RegisterFormData, { rejectWithValue }) => {
+  async (credentials: LoginFormData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:5000/login', credentials);
-      // Assuming your API returns { user: ..., token: ... }
-      return response.data;
+      // Login with email and password
+      const response = await axios.post('http://localhost:5000/login', {
+        email: credentials.email,
+        password: credentials.password
+      });
+      
+      if (response.data && response.data.accessToken) {
+        // Get user profile with the token
+        const userResponse = await axios.get(`http://localhost:5000/600/users?email=${credentials.email}`, {
+          headers: {
+            Authorization: `Bearer ${response.data.accessToken}`
+          }
+        });
+        
+        const user = userResponse.data[0];
+        
+        if (!user) {
+          throw new Error('User profile not found');
+        }
+        
+        return {
+          user,
+          token: response.data.accessToken
+        };
+      }
+      
+      throw new Error('Login failed - no token received');
     } catch (error: any) {
-      return rejectWithValue(error.response?.data || error.message);
+      console.error('Login error:', error.response?.data || error.message);
+      return rejectWithValue(
+        error.response?.data?.message || 
+        error.message || 
+        'Login failed'
+      );
     }
   }
 );

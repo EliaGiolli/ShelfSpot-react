@@ -12,3 +12,8 @@ export interface User{
     password: string,
     role: userRole
 }
+
+
+export interface PrivateRouteProps {
+    requiredRole?: userRole;
+}

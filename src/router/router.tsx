@@ -11,7 +11,8 @@ import Homepage from '../pages/Homepage';
 import SearchBook from '../pages/SearchBookDiv';
 import Contacts from '../pages/Contacts';
 import NotFound from '../pages/NotFound';
-
+import PrivateRoute from '../components/PrivateRoute';
+import { userRole } from '../types/userDataTypes';
 
 
 export const router = createBrowserRouter([
@@ -62,12 +63,18 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'books',
-                element: <SearchBook />
+                element: <PrivateRoute requiredRole={userRole.Member} />,
+                children: [
+                    {
+                        index: true,
+                        element: <SearchBook />
+                    },
+                    {
+                        path: 'contacts',
+                        element: <Contacts />
+                    }
+                ]
             },
-            {
-                path: 'contacts',
-                element: <Contacts />
-            }
         ]
     },
     {

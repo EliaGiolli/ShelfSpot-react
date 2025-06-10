@@ -37,6 +37,52 @@ function Register() {
       >
         <h2 className="text-3xl font-semibold mb-8 text-gray-900">Register</h2>
 
+        <Form.Field className="mb-6" name="name">
+          <div className="flex justify-between items-baseline mb-1">
+            <Form.Label className="text-lg font-medium text-gray-700">Name</Form.Label>
+            <Form.Message className="text-sm text-red-600" match="valueMissing">
+              Please enter your name
+            </Form.Message>
+          </div>
+          <Form.Control asChild>
+            <input
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
+              type="text"
+              required
+              placeholder="Your name"
+              {...register("name", {
+                required: "Name is required",
+              })}
+            />
+          </Form.Control>
+          {errors.name && (
+            <span className="text-sm text-red-600 bg-red-100 p-3">{errors.name.message}</span>
+          )}
+        </Form.Field>
+
+        <Form.Field className="mb-6" name="lastName">
+          <div className="flex justify-between items-baseline mb-1">
+            <Form.Label className="text-lg font-medium text-gray-700">Last Name</Form.Label>
+            <Form.Message className="text-sm text-red-600" match="valueMissing">
+              Please enter your last name
+            </Form.Message>
+          </div>
+          <Form.Control asChild>
+            <input
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
+              type="text"
+              required
+              placeholder="Your last name"
+              {...register("lastName", {
+                required: "Last name is required",
+              })}
+            />
+          </Form.Control>
+          {errors.lastName && (
+            <span className="text-sm text-red-600 bg-red-100 p-3">{errors.lastName.message}</span>
+          )}
+        </Form.Field>
+
         <Form.Field className="mb-6" name="email">
           <div className="flex justify-between items-baseline mb-1">
             <Form.Label className="text-lg font-medium text-gray-700">Email</Form.Label>

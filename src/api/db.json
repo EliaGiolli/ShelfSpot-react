@@ -20,6 +20,14 @@
       "id": "298c",
       "email": "paololimiti@gmail.com",
       "password": "111111"
+    },
+    {
+      "id": "2326",
+      "name": "paolo",
+      "lastName": "limiti",
+      "email": "paololimiti@gmail.com",
+      "password": "111111",
+      "role": "guest"
     }
   ],
   "loans": [
