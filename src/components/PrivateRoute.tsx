@@ -5,17 +5,16 @@ import { Navigate, Outlet } from "react-router"
 import { PrivateRouteProps } from "../types/userDataTypes"
 
 function PrivateRoute({ requiredRole }: PrivateRouteProps) {
-    
     // Get user info from Redux store
-    const { userToken, userInfo } = useSelector((state: RootState) => state.auth);
+    const { userInfo } = useSelector((state: RootState) => state.auth);
     
-    // If no token, redirect to login
-    if (!userToken) {
+    // If no user info, redirect to login
+    if (!userInfo) {
         return <Navigate to="/login" />;
     }
     
     // If role is required and user doesn't have it, redirect to home
-    if (requiredRole && userInfo?.role !== requiredRole) {
+    if (requiredRole && userInfo?.role?.toLowerCase() !== requiredRole.toLowerCase()) {
         return <Navigate to="/home" />;
     }
     

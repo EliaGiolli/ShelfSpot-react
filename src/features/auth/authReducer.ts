@@ -20,13 +20,13 @@ export const registerUser = createAsyncThunk(
         throw new Error('User already exists');
       }
 
-      // Create new user
+      // Create new user with lowercase role
       const response = await axios.post("http://localhost:5000/users", {
         email: userData.email,
         password: userData.password, // In a real app, this should be hashed
         name: userData.name,
         lastName: userData.lastName,
-        role: userRole.Guest
+        role: userRole.Guest.toLowerCase()
       });
       
       return response.data;
@@ -57,9 +57,12 @@ export const userLogin = createAsyncThunk(
         throw new Error('Invalid password');
       }
 
-      // Don't send password back to client
+      // Don't send password back to client and ensure role is lowercase
       const { password, ...userWithoutPassword } = user;
-      return userWithoutPassword;
+      return {
+        ...userWithoutPassword,
+        role: userWithoutPassword.role?.toLowerCase() || 'guest'
+      };
     } catch (error: any) {
       return rejectWithValue(
         error.response?.data?.message || 

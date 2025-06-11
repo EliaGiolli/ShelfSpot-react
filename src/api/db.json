@@ -36,6 +36,14 @@
       "email": "paololimiti@gmail.com",
       "password": "111111",
       "role": "guest"
+    },
+    {
+      "email": "eliabianchi00@hotmail.com",
+      "password": "111000",
+      "name": "eli",
+      "lastName": "bianchi",
+      "role": "guest",
+      "id": "GT92K52"
     }
   ],
   "loans": [

@@ -9,7 +9,7 @@ function Navbar() {
     <nav className='flex justify-around items-center w-full max-h-20 bg-amber-700 border-b-2 border-b-yellow-300 px-4 py-6'
       aria-label='primary-navigation'
     >
-      <Link to='/' className="font-bold text-3xl text-yellow-300 hidden md:block">ShelfSpot</Link>
+      <Link to='/home' className="font-bold text-3xl text-yellow-300 hidden md:block">ShelfSpot</Link>
       <ul className='flex items-center text-center text-2xl gap-x-8'>
         <li>
           <NavLink 

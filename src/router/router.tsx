@@ -13,7 +13,7 @@ import Contacts from '../pages/Contacts';
 import NotFound from '../pages/NotFound';
 import PrivateRoute from '../components/PrivateRoute';
 import { userRole } from '../types/userDataTypes';
-
+import { store } from '../store/store';
 
 export const router = createBrowserRouter([
     {
@@ -25,20 +25,20 @@ export const router = createBrowserRouter([
                 path: 'login',
                 element: <Login />,
                 loader: async () => {
-                    const isLoggedIn = localStorage.getItem('token'); // Check auth token
-                    if (isLoggedIn) {
-                        return redirect('/'); // Redirect to home if authenticated
+                    const state = store.getState();
+                    if (state.auth.userInfo) {
+                        return redirect('/home');
                     }
-                    return null; // Allow login page to render
+                    return null;
                 }
             },
             {
                 path: 'register',
                 element: <Register />,
                 loader: async () => {
-                    const isRegistered = localStorage.getItem('token');
-                    if (isRegistered) {
-                        return redirect('/');
+                    const state = store.getState();
+                    if (state.auth.userInfo) {
+                        return redirect('/home');
                     }
                     return null;
                 }
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
             {
                 path: '/logout',
                 loader: async () => {
-                    localStorage.removeItem('token');
+                    store.dispatch({ type: 'auth/logout' });
                     return redirect('/login');
                 }
             }
