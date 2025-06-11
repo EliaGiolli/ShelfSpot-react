@@ -19,8 +19,7 @@ export interface RegisterError {
 
 export interface AuthState {
   loading: boolean;
-  userInfo: User | null;      
-  userToken: string | null;
+  userInfo: any | null;
   error: string | null;
   success: boolean;
 }

@@ -3,58 +3,34 @@ import axios from "axios";
 import { userRole } from "../../types/userDataTypes";
 import { RegisterFormData, LoginFormData, AuthState } from "../../types/formData";
 
-
 const initialState: AuthState = {
   loading: false,
   userInfo: null,
-  userToken: localStorage.getItem('userToken') || null,
   error: null,
   success: false,
 };
-
-
-export const fetchUserById = createAsyncThunk(
-    'users/fetchByIdStatus',
-    async (userId: number, { rejectWithValue }) => {
-        try {
-            const response = await axios.get(`http://localhost:5000/users/${userId}`);
-            return response.data;
-        } catch(error:any){
-            return rejectWithValue(error.response?.data || error.message);
-        }
-    }
-)
 
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData: RegisterFormData, { rejectWithValue }) => {
     try {
-      // Register the user with json-server-auth
-      const response = await axios.post("http://localhost:5000/register", {
+      // Check if user already exists
+      const existingUser = await axios.get(`http://localhost:5000/users?email=${userData.email}`);
+      if (existingUser.data.length > 0) {
+        throw new Error('User already exists');
+      }
+
+      // Create new user
+      const response = await axios.post("http://localhost:5000/users", {
         email: userData.email,
-        password: userData.password,
+        password: userData.password, // In a real app, this should be hashed
         name: userData.name,
         lastName: userData.lastName,
         role: userRole.Guest
       });
       
-      if (response.data && response.data.accessToken) {
-        return {
-          user: {
-            id: Date.now(),
-            name: userData.name,
-            lastName: userData.lastName,
-            email: userData.email,
-            password: userData.password,
-            role: userRole.Guest
-          },
-          token: response.data.accessToken
-        };
-      }
-      
-      throw new Error('Registration failed - no token received');
+      return response.data;
     } catch (error: any) {
-      console.error('Registration error:', error.response?.data || error.message);
       return rejectWithValue(
         error.response?.data?.message || 
         error.message || 
@@ -68,35 +44,23 @@ export const userLogin = createAsyncThunk(
   'auth/loginUser',
   async (credentials: LoginFormData, { rejectWithValue }) => {
     try {
-      // Login with email and password
-      const response = await axios.post('http://localhost:5000/login', {
-        email: credentials.email,
-        password: credentials.password
-      });
+      // Find user by email
+      const response = await axios.get(`http://localhost:5000/users?email=${credentials.email}`);
+      const user = response.data[0];
       
-      if (response.data && response.data.accessToken) {
-        // Get user profile with the token
-        const userResponse = await axios.get(`http://localhost:5000/600/users?email=${credentials.email}`, {
-          headers: {
-            Authorization: `Bearer ${response.data.accessToken}`
-          }
-        });
-        
-        const user = userResponse.data[0];
-        
-        if (!user) {
-          throw new Error('User profile not found');
-        }
-        
-        return {
-          user,
-          token: response.data.accessToken
-        };
+      if (!user) {
+        throw new Error('User not found');
       }
-      
-      throw new Error('Login failed - no token received');
+
+      // Check password (in a real app, this would be hashed)
+      if (user.password !== credentials.password) {
+        throw new Error('Invalid password');
+      }
+
+      // Don't send password back to client
+      const { password, ...userWithoutPassword } = user;
+      return userWithoutPassword;
     } catch (error: any) {
-      console.error('Login error:', error.response?.data || error.message);
       return rejectWithValue(
         error.response?.data?.message || 
         error.message || 
@@ -106,16 +70,13 @@ export const userLogin = createAsyncThunk(
   }
 );
 
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     logout: (state) => {
-      localStorage.removeItem('userToken');
       state.loading = false;
       state.userInfo = null;
-      state.userToken = null;
       state.error = null;
       state.success = false;
     },
@@ -129,14 +90,12 @@ const authSlice = createSlice({
       })
       .addCase(userLogin.fulfilled, (state, action) => {
         state.loading = false;
-        state.userInfo = action.payload.user;
-        state.userToken = action.payload.token;
+        state.userInfo = action.payload;
         state.success = true;
-        localStorage.setItem('userToken', action.payload.token);
       })
       .addCase(userLogin.rejected, (state, action) => {
         state.loading = false;
-        state.error = ( action.payload as string) || 'unknown error';
+        state.error = (action.payload as string) || 'unknown error';
       })
       // Registration
       .addCase(registerUser.pending, (state) => {
@@ -145,13 +104,12 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.userInfo = action.payload.user;
-        state.userToken = action.payload.token;
+        state.userInfo = action.payload;
         state.success = true;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = ( action.payload as string) || 'unknown error';
+        state.error = (action.payload as string) || 'unknown error';
       });
   },
 });
