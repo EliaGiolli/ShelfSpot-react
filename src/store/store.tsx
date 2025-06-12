@@ -1,11 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from '../features/auth/authReducer'
-
+import { openLibraryApi } from "../features/api/apiReducer";
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
-    }
+        //openLibraryApi.reducerPath is a string key that RTK Query generates for the API slice reducer.
+        //openLibraryApi.reducer is the reducer function that RTK Query provides to handle the API cache state.
+        [openLibraryApi.reducerPath]: openLibraryApi.reducer
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(openLibraryApi.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

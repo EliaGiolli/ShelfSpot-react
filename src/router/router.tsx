@@ -8,7 +8,7 @@ import Register from '../pages/Register';
 import AuthLayout from '../layouts/AuthLayout';
 import MainLayout from '../layouts/MainLayout';
 import Homepage from '../pages/Homepage';
-import SearchBook from '../pages/SearchBookDiv';
+import SearchBook from '../pages/SearchBook';
 import Contacts from '../pages/Contacts';
 import NotFound from '../pages/NotFound';
 import PrivateRoute from '../components/PrivateRoute';

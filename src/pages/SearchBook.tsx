@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { useFetch } from '../custom hooks/useFetchBook';
+import { useSearchBooksQuery } from '../features/api/apiReducer';
 import { Books } from '../types/book';
 
 // Aggiungi questa interfaccia all'inizio del file
-function SearchBookDiv() {
-  const [searchTerm, setSearchTerm] = useState<string | number>("");
+function SearchBook() {
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const {books, error, loading} = useFetch(searchTerm);
+  const {data:books, error, isLoading} = useSearchBooksQuery(searchTerm);
 
   const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -23,10 +23,19 @@ function SearchBookDiv() {
           className='flex-1 p-2 sm:p-2 md:p-2 lg:p-1 bg-amber-50 hover:bg-amber-100 border-2 border-yellow-600 rounded-md'
         />
       </div>
-      {loading && <p className='bg-orange-200 text-orange-900 p-2'>Loading...</p>}
-      {error && <p className='bg-red-100 text-red-700 p-2'>{error}</p>}
+      {isLoading && <p className='bg-orange-200 text-orange-900 p-2'>Loading...</p>}
+
+      {error && (
+        <p className='bg-red-100 text-red-700 p-2'>
+          { 'status' in error
+            ? `Error ${error.status}: ${JSON.stringify(error.data)}`
+            : error.message || 'An unknown error occurred' }
+        </p>
+      )}
+
       <div className='grid grid-cols-4 gap-4 max-h-[500px] mt-5'>
-        {books.length > 0 && books.slice(0,20).map((book: Books) => (
+        
+        {(books ?? []).slice(0,20).map((book: Books) => (
           <div key={book.key} className="mb-4 p-2 border-b border-white text-white">
             <h3 className="font-bold">{book.title}</h3>
             <p>Author: {book.author ? book.author.join(', ') : 'Unknown'}</p>
@@ -39,4 +48,4 @@ function SearchBookDiv() {
   );
 }
 
-export default SearchBookDiv
+export default SearchBook

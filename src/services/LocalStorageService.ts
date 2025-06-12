@@ -1,4 +1,4 @@
-import { StorageService } from "./storageService";
+import { StorageService } from "./StorageService";
 
 export class LocalStorageService<T = any> extends StorageService<T>{
 

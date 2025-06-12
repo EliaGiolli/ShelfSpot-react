@@ -1,4 +1,4 @@
-import { StorageService } from "./storageService";
+import { StorageService } from "./StorageService";
 
 //here TS now understands that the T type also has a id as string
 export class FavoritesService<T extends { id: string }> {
