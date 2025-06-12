@@ -1,12 +1,19 @@
 import { useState } from 'react'
 import { useSearchBooksQuery } from '../features/api/apiReducer';
+import { useDebounce } from '../custom hooks/useDebounce';
 import { Books } from '../types/book';
 
-// Aggiungi questa interfaccia all'inizio del file
+import { skipToken } from '@reduxjs/toolkit/query';
+
+
 function SearchBook() {
+
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const {data:books, error, isLoading} = useSearchBooksQuery(searchTerm);
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+  //The Skip Token avoids initial api requests
+  //RTK aborts pending requests when a new request is made before the previous one completes
+  const {data:books, error, isLoading} = useSearchBooksQuery( debouncedSearchTerm || skipToken );
 
   const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -23,6 +30,7 @@ function SearchBook() {
           className='flex-1 p-2 sm:p-2 md:p-2 lg:p-1 bg-amber-50 hover:bg-amber-100 border-2 border-yellow-600 rounded-md'
         />
       </div>
+      
       {isLoading && <p className='bg-orange-200 text-orange-900 p-2'>Loading...</p>}
 
       {error && (
@@ -34,7 +42,7 @@ function SearchBook() {
       )}
 
       <div className='grid grid-cols-4 gap-4 max-h-[500px] mt-5'>
-        
+
         {(books ?? []).slice(0,20).map((book: Books) => (
           <div key={book.key} className="mb-4 p-2 border-b border-white text-white">
             <h3 className="font-bold">{book.title}</h3>
