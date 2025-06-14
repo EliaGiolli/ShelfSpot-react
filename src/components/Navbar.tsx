@@ -13,6 +13,14 @@ function Navbar() {
       <ul className='flex items-center text-center text-2xl gap-x-8'>
         <li>
           <NavLink 
+            to='/home'
+            className={({isActive})=> isActive ? 'text-yellow-300 underline' : 'text-gray-200 hover:text-yellow-300 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded'}
+            >
+              Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
             to='/books'
             className={({isActive})=> isActive ? 'text-yellow-300 underline' : 'text-gray-200 hover:text-yellow-300 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded'}
             >

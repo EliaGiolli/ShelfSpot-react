@@ -95,6 +95,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.userInfo = action.payload;
         state.success = true;
+        localStorage.setItem('userInfo', JSON.stringify(action.payload));
       })
       .addCase(userLogin.rejected, (state, action) => {
         state.loading = false;
@@ -109,6 +110,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.userInfo = action.payload;
         state.success = true;
+        localStorage.setItem('userInfo', JSON.stringify(action.payload));
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;

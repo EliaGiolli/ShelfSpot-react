@@ -4,12 +4,20 @@ function SearchBookCards({ books }:BooksProps) {
   return (
     <>
         {(books ?? []).slice(0,20).map((book: Books) => (
-          <div key={book.key} className="mb-4 p-2 border-b border-white text-white">
-            <h3 className="font-bold">{book.title}</h3>
-            <p>Author: {book.author ? book.author.join(', ') : 'Unknown'}</p>
-            <p>Year: {book.first_publish_year || 'Unknown'}</p>
-            <p>Subject: {book.subject ? book.subject[0] : 'Not specified'}</p>
-          </div>
+          <article key={book.key} className="mb-4 px-4 py-3 bg-gray-200 border-b border-amber-700 text-gray-900 rounded-lg shadow shadow-gray-800">
+            <img
+              src={book.cover_i ? 
+                `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+                : 
+                `img/placeholder.jpg`} 
+              alt="an image of old books" />
+            <h3 className="font-bold text-yellow-500">{book.title}</h3>
+           <div className='my-5'>
+              <p>Author: {book.author ? book.author.join(', ') : 'Unknown'}</p>
+              <p>Year: {book.first_publish_year || 'Unknown'}</p>
+              <p>Subject: {book.subject ? book.subject[0] : 'Not specified'}</p>
+           </div>
+          </article>
         ))}
     </>
   )
