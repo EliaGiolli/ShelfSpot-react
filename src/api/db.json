@@ -44,6 +44,14 @@
       "lastName": "bianchi",
       "role": "guest",
       "id": "GT92K52"
+    },
+    {
+      "email": "ab@gmail.com",
+      "password": "111222",
+      "name": "a",
+      "lastName": "b",
+      "role": "guest",
+      "id": "4S74s_V"
     }
   ],
   "loans": [

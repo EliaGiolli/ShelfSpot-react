@@ -1,8 +1,10 @@
-import React from 'react'
+import { ButtonProps } from "../types/customProps"
 
-function Button() {
+function Button({children, onClick, className}:ButtonProps) {
   return (
-    <div>Button</div>
+    <button className="bg-amber-400 hover:bg-amber-600 text-gray-200 p-4 rounded-md shadow shadow-gray-200" onClick={onClick}>
+      { children }
+    </button>
   )
 }
 
