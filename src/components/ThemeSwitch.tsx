@@ -24,7 +24,6 @@ const ThemeSwitch = () => {
 
 	return(
         <>
-         <form>
             <div className="flex items-center">
                 <label
                     className="pr-4 text-base font-medium text-yellow-300"
@@ -33,18 +32,21 @@ const ThemeSwitch = () => {
                     Theme Switch
                 </label>
             <Switch.Root
-                className="relative h-[25px] w-[42px] cursor-pointer rounded-full bg-amber-50 shadow-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-amber-400 data-[state=checked]:bg-amber-700"
+                className="
+                  relative h-[25px] w-[42px] cursor-pointer rounded-full bg-amber-50 dark:bg-amber-500 
+                  shadow-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-amber-400 dark:focus:shadow-amber-600 data-[state=checked]:bg-amber-700 dark:data-[state=checked]:bg-amber-800"
                 id="theme-switch"
                 aria-label="toggle light and dark theme"
-                onClick={() => dispatch(toggleTheme())}
+                onCheckedChange={() => dispatch(toggleTheme())}
                 checked={theme === 'dark'}
             >
                 <Switch.Thumb
-                className="block h-[21px] w-[21px] translate-x-0.5 rounded-full bg-yellow-300 shadow-md transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px]"
+                className="
+                  block h-[21px] w-[21px] translate-x-0.5 rounded-full bg-yellow-300 dark:bg-amber-700 
+                  shadow-md transition-transform duration-100 will-change-transform data-[state=checked]:translate-x-[19px]"
                 />
             </Switch.Root>
-            </div>
-         </form>
+        </div>
         
         </>
     )
