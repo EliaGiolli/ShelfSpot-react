@@ -26,7 +26,7 @@ const ThemeSwitch = () => {
         <>
             <div className="flex items-center">
                 <label
-                    className="pr-4 text-base font-medium text-yellow-300"
+                    className="pr-4 text-base font-medium text-yellow-300 dark:text-yellow-600"
                     htmlFor="theme-switch"
                 >
                     Theme Switch

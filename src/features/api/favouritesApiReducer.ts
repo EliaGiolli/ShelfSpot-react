@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Favourites } from "../../types/book";
 
 export const favouritesApi = createApi({
@@ -30,3 +30,9 @@ export const favouritesApi = createApi({
         })
     })
 })
+
+export const { 
+    useGetFavouritesQuery,
+    useAddToFavouritesMutation,
+    useRemoveFromFavouritesMutation
+} = favouritesApi;

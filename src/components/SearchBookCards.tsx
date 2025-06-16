@@ -1,9 +1,29 @@
 import { Books, BooksProps } from '../types/book'
 import Button from './Button'
+import { useAddToFavouritesMutation } from '../features/api/favouritesApiReducer'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store/store'
+
 
 function SearchBookCards({ books }:BooksProps) {
 
-  const addToFavourites = () => {}
+  const currentUser = useSelector((state:RootState) =>state.auth.userInfo);
+  const userId = currentUser?.id; //it uses the correct property from the auth state
+
+  const [ addToFavourites, { isLoading, error }] = useAddToFavouritesMutation();
+  
+  const handleAddToFavourites = async (bookId:string) =>{
+    try{
+      await addToFavourites({
+        userId: userId!, //asserts non-null if authenticated 
+        userName: currentUser?.name,
+        lastName: currentUser?.lastName,
+        bookId: bookId
+      }).unwrap() //Unwraps a mutation call to provide the raw response/error
+    }catch(error){
+      console.error('Failed to add favourites', error);
+    }
+  };
 
   return (
     <>
@@ -22,7 +42,7 @@ function SearchBookCards({ books }:BooksProps) {
               <p>Year: {book.first_publish_year || 'Unknown'}</p>
               <p>Subject: {book.subject ? book.subject[0] : 'Not specified'}</p>
            </div>
-           <Button onClick={addToFavourites}>
+           <Button onClick={() => handleAddToFavourites(book.key)} disabled={isLoading}>
                 Add to favourtites
             </Button>
           </article>
