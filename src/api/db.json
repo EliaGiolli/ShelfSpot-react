@@ -9,14 +9,6 @@
       "role": "Guest"
     },
     {
-      "id": "1",
-      "name": "Luca",
-      "lastName": "Rossi",
-      "email": "lucarossi@hotmail.it",
-      "password": "passwordEfficace",
-      "role": "guest"
-    },
-    {
       "id": "2",
       "name": "Mario",
       "lastName": "Bianchi",
@@ -38,14 +30,6 @@
       "role": "guest"
     },
     {
-      "email": "eliabianchi00@hotmail.com",
-      "password": "111000",
-      "name": "eli",
-      "lastName": "bianchi",
-      "role": "guest",
-      "id": "GT92K52"
-    },
-    {
       "email": "ab@gmail.com",
       "password": "111222",
       "name": "a",
@@ -58,11 +42,20 @@
     {
       "id": "1",
       "userId": "1",
-      "nome": "Mario",
+      "userName": "Mario",
       "lastName": "Strurniolo",
       "bookId": "10",
       "borrowDate": "2025-06-01T10:00:00Z",
       "dueDate": "2025-06-15T10:00:00Z"
+    }
+  ],
+  "favourites": [
+    {
+      "id": "1",
+      "userId": "1",
+      "userName":"Mario",
+      "lastName":"Bianchi",
+      "bookId":"10"
     }
   ]
 }

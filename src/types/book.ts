@@ -10,3 +10,22 @@ export interface Books {
 export interface BooksProps {
     books?: Books[]
 }
+
+export interface Loans {
+    id: string,
+    userId: string,
+    userName: string,
+    lastName: string,
+    bookId: string,
+    borrowDate: Date,
+    dueDate: Date
+    returnDate?: Date
+}
+
+export interface Favourites {
+    id:string,
+    userId:string,
+    userName:string,
+    lastName:string
+    bookId:string
+}
