@@ -27,5 +27,6 @@ export interface Favourites {
     userId:string,
     userName:string,
     lastName:string
-    bookId:string
+    bookId:string,
+    bookTitle: string
 }

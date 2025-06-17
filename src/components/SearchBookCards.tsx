@@ -12,7 +12,7 @@ function SearchBookCards({ books }:BooksProps) {
 
   const [ addToFavourites, { isLoading, error }] = useAddToFavouritesMutation();
   
-  const handleAddToFavourites = async (bookId:string) => {
+  const handleAddToFavourites = async (bookId:string, bookTitle:string) => {
 
     try {
       await addToFavourites({
@@ -20,6 +20,7 @@ function SearchBookCards({ books }:BooksProps) {
         userName: currentUser?.name,
         lastName: currentUser?.lastName,
         bookId,
+        bookTitle,
       }).unwrap() //Unwraps a mutation call to provide the raw response/error
     }catch( error ) {
       console.error('Failed to add favourites', error);
@@ -43,7 +44,7 @@ function SearchBookCards({ books }:BooksProps) {
               <p>Year: {book.first_publish_year || 'Unknown'}</p>
               <p>Subject: {book.subject ? book.subject[0] : 'Not specified'}</p>
            </div>
-           <Button onClick={() => handleAddToFavourites(book.key)} disabled={isLoading}>
+           <Button onClick={() => handleAddToFavourites(book.key, book.title)} disabled={isLoading}>
                 Add to favourtites
             </Button>
             { error && <p className="text-red-500 bg-red-200 p-4">Failed to add to favourites. Please try again.</p> }

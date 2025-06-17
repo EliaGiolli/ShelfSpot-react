@@ -55,7 +55,8 @@
       "userId": "1",
       "userName":"Mario",
       "lastName":"Bianchi",
-      "bookId":"10"
+      "bookId":"10",
+      "bookTitle": "IT"
     }
   ]
 }
