@@ -53,10 +53,26 @@
     {
       "id": "1",
       "userId": "1",
-      "userName":"Mario",
-      "lastName":"Bianchi",
-      "bookId":"10",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "10",
       "bookTitle": "IT"
+    },
+    {
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "/works/OL2895536W",
+      "bookTitle": "Carmilla",
+      "id": "A4MbSee"
+    },
+    {
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "/works/OL85891W",
+      "bookTitle": "The Jewel of Seven Stars",
+      "id": "7L4KA4G"
     }
   ]
 }

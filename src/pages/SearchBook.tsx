@@ -5,6 +5,7 @@ import { Books } from '../types/book';
 
 import { skipToken } from '@reduxjs/toolkit/query';
 import SearchBookCards from '../components/SearchBookCards';
+import FavouriteSidebar from '../components/FavouriteSidebar'
 
 
 function SearchBook() {
@@ -33,7 +34,6 @@ function SearchBook() {
             className='flex-1 p-2 sm:p-2 md:p-2 lg:p-1 bg-amber-50 hover:bg-amber-100 border-2 border-yellow-600 rounded-md'
           />
         </div>
-
         {isLoading && <p className='bg-orange-200 text-orange-900 p-2'>Loading...</p>}
 
         {error && (
@@ -49,6 +49,7 @@ function SearchBook() {
           <SearchBookCards books={books}/>
         </div>
       </div>
+      <FavouriteSidebar />
     </main>
   );
 }

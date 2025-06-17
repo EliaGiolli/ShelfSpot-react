@@ -1,10 +1,9 @@
-import { useTheme } from "../custom hooks/useTheme"
 import { useGetFavouritesQuery } from "../features/api/favouritesApiReducer";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 
 
-function Sidebar() {
+function FavouriteSidebar() {
 
     const userId = useSelector((state:RootState) => state.auth.userInfo?.id);
     const { data: favourites, isLoading, error } =useGetFavouritesQuery(userId ?? '');
@@ -13,9 +12,10 @@ function Sidebar() {
     if(error) return <p className="bg-red-100 text-red-500 p-3">Error loading favourites</p>
 
   return (
-    <aside className="bg-amber-400 dark:bg-amber-700 text-gray-900 dark:text-gray-200 flex flex-col justify-center items-center text-center p-5">
-      <h2>{userId}'s favourites</h2>
-      <ul>
+    <aside className="bg-amber-400 dark:bg-amber-700 text-gray-900 dark:text-gray-200 
+      flex flex-col justify-center items-center text-center w-1/3 min-h-screen p-5">
+      <h2 className="text-2xl md:text-3xl text-amber-500 dark:text-amber-700 mb-5">{userId}'s favourites</h2>
+      <ul className="px-4 py-2 text-lg">
          {favourites?.map(fav => (
           <li key={fav.id}>{fav.bookTitle || fav.bookId}</li>
         ))}
@@ -24,4 +24,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default FavouriteSidebar
