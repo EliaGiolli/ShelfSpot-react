@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'books',
-                element: <PrivateRoute requiredRole={userRole.Member} />,
+                //element: <PrivateRoute requiredRole={userRole.Member} />,
                 children: [
                     {
                         index: true,

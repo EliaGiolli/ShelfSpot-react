@@ -6,7 +6,7 @@ import ThemeSwitch from './ThemeSwitch'
 function Navbar() {
     
   return (
-    <nav className='flex justify-around items-center w-full max-h-20 bg-amber-700 border-b-2 border-b-yellow-300 px-4 py-6'
+    <nav className='bg-amber-700 flex justify-around items-center w-full max-h-20 border-b-2 border-b-yellow-300 sticky top-0 z-50 px-4 py-6'
       aria-label='primary-navigation'
     >
       <Link to='/home' className="font-bold text-3xl text-yellow-300 hidden md:block">ShelfSpot</Link>

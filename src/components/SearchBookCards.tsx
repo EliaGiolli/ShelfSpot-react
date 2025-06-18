@@ -30,23 +30,31 @@ function SearchBookCards({ books }:BooksProps) {
   return (
     <>
         {(books ?? []).slice(0,20).map((book: Books) => (
-          <article key={book.key} className="flex flex-col mb-4 px-4 py-3 bg-gray-200 border-b border-amber-700 text-gray-900 rounded-lg shadow shadow-gray-800">
+          <article key={book.key} className="flex flex-col mb-4 bg-white border-b border-amber-700 text-gray-900 rounded-lg shadow">
+           <div className='overflow-hidden rounded-t-lg'>
             <img
               src={book.cover_i ? 
                 `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
                 : 
                 `img/placeholder.jpg`} 
-              alt="an image of old books"
-              className='w-full object-cover h-30' />
-            <h3 className="font-bold text-yellow-500">{book.title}</h3>
-           <div className='my-5'>
-              <p>Author: {book.author ? book.author.join(', ') : 'Unknown'}</p>
-              <p>Year: {book.first_publish_year || 'Unknown'}</p>
-              <p>Subject: {book.subject ? book.subject[0] : 'Not specified'}</p>
+                alt="an image of old books"
+                className='w-full object-cover h-48 rounded-t-lg' />
+            </div>
+           <div className='px-4 py-3 my-4 h-[150px]'>
+            <h3 className="font-bold text-lg text-yellow-600">{book.title}</h3>
+              <p className='text-sm'>Author: {book.author ? book.author.join(', ') : 'Unknown'}</p>
+              <p className='text-sm'>Year: {book.first_publish_year || 'Unknown'}</p>
+              <p className='text-sm'>Subject: {book.subject ? book.subject[0] : 'Not specified'}</p>
            </div>
-           <Button onClick={() => handleAddToFavourites(book.key, book.title)} disabled={isLoading}>
-                Add to favourtites
-            </Button>
+           <div className='px-4 pb-3'>
+            <Button 
+              onClick={() => handleAddToFavourites(book.key, book.title)} 
+              disabled={isLoading}
+              aria-label={`Add ${book.title} to favourites`}
+              >
+                  Add to favourites
+              </Button>
+            </div>
             { error && <p className="text-red-500 bg-red-200 p-4">Failed to add to favourites. Please try again.</p> }
           </article>
         ))}
