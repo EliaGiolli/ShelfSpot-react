@@ -24,7 +24,7 @@ function Footer() {
             <BookOpen size={20} />
             Books
           </Link>
-          <Link to="/contacts" className="flex items-center gap-2 hover:text-amber-300 transition">
+          <Link to="/loans" className="flex items-center gap-2 hover:text-amber-300 transition">
             <Phone size={20} />
             Contact
           </Link>

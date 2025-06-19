@@ -41,7 +41,7 @@ function SearchBook() {
         <div className='
           bg-white w-full overflow-auto max-h-screen col-span-1 md:col-span-2
           flex flex-col justify-center items-center text-center rounded-lg shadow shadow-gray-500 px-5 py-6'>
-          <h1 className='md:text-xl lg:text-2xl md:text-wrap uppercase font-bold text-amber-600 my-7'>Search for your fantasy book!</h1>
+          <h1 className='text-2xl md:text-3xl md:text-wrap uppercase font-bold text-amber-600 my-7'>Search for your fantasy book!</h1>
           <div 
             className='flex flex-col sm:flex-col md:flex-col lg:flex-row justify-evenly items-center text-center 
             sm:p-3 md:p-2 lg:p-2 mt-3'

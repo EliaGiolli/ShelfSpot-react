@@ -2,7 +2,7 @@ import * as Label from '@radix-ui/react-label';
 import { InputProps } from '../types/customProps';
 
 const LabelDemo = ({className, handleInputChange, searchTerm}:InputProps) => (
-	<div className="flex flex-wrap items-center gap-[15px] px-5">
+	<div className="flex flex-wrap justify-center items-center gap-[15px] px-5">
 		<Label.Root
 			className="text-[15px] font-medium leading-[35px] text-gray-400"
 			htmlFor="Book genre"
