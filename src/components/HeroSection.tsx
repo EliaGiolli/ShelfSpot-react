@@ -23,7 +23,7 @@ function HeroSection() {
           Dive into a world of fantasy and adventure. Search, explore, and save your favorites with ease.
         </p>
         <Link
-          to="/contacts"
+          to="/loans"
           className="inline-block bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg px-8 py-3 shadow-lg transition"
           aria-label="Contact us to borrow books"
         >

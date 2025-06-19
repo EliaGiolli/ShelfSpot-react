@@ -9,7 +9,7 @@ function BorrowingCTA() {
         Contact us today to borrow your favorite books and start your adventure!
         </p>
         <Link
-         to="/contacts"
+         to="/loans"
          className="inline-block bg-amber-400 hover:bg-amber-500 text-white font-semibold rounded-lg px-10 py-4 shadow-lg transition"
          aria-label="Contact us to borrow books"
         >

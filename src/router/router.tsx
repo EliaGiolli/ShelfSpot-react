@@ -9,11 +9,11 @@ import AuthLayout from '../layouts/AuthLayout';
 import MainLayout from '../layouts/MainLayout';
 import Homepage from '../pages/Homepage';
 import SearchBook from '../pages/SearchBook';
-import Contacts from '../pages/Contacts';
 import NotFound from '../pages/NotFound';
 import PrivateRoute from '../components/PrivateRoute';
 import { userRole } from '../types/userDataTypes';
 import { store } from '../store/store';
+import LoansPage from '../pages/LoansPage';
 
 export const router = createBrowserRouter([
     {
@@ -57,25 +57,20 @@ export const router = createBrowserRouter([
         element: <MainLayout />,
         children: [
             {
-                path: 'home',
-                element: <Homepage />,
-                index: true
+            path: 'home',
+            element: <Homepage />,
+            index: true,
             },
             {
-                path: 'books',
-                //element: <PrivateRoute requiredRole={userRole.Member} />,
-                children: [
-                    {
-                        index: true,
-                        element: <SearchBook />
-                    },
-                    {
-                        path: 'contacts',
-                        element: <Contacts />
-                    }
-                ]
+            path: 'books',
+            element: <SearchBook />,
+            index: true,
             },
-        ]
+            {
+            path: 'loans',
+            element: <LoansPage />,
+            },
+        ],
     },
     {
         path: '*',

@@ -29,7 +29,7 @@ function Navbar() {
         </li>
         <li>
           <NavLink 
-            to='/contacts'
+            to='/loans'
             className={({isActive})=> isActive ? 'text-yellow-300 underline' : 'text-gray-200 hover:text-yellow-300 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded'}
             >
               Borrow a book

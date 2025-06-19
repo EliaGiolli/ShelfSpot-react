@@ -1,4 +1,4 @@
-export interface Books {
+export interface Book {
     key: string;
     title: string;
     author: string[];
@@ -7,19 +7,8 @@ export interface Books {
     cover_i: number
 };
 
-export interface BooksProps {
-    books?: Books[]
-}
-
-export interface Loans {
-    id: string,
-    userId: string,
-    userName: string,
-    lastName: string,
-    bookId: string,
-    borrowDate: Date,
-    dueDate: Date
-    returnDate?: Date
+export interface BookProps {
+    books?: Book[]
 }
 
 export interface Favourites {

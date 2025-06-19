@@ -1,118 +1,125 @@
 # 📚 Search4YourBook
 
-Search4YourBook è un'applicazione web che consuma l'API esterna di **OpenAILibrary** per mostrare un elenco di libri in base al genere selezionato dall'utente. L'app è sviluppata con **React**, **TypeScript** e **Tailwind CSS v4**.
+Search4YourBook is a modern web application that allows users to explore and manage books through the OpenLibrary API. Built with React, TypeScript, and Tailwind CSS, it provides a seamless experience for book enthusiasts to discover, save, and borrow their favorite reads.
 
----
+## 🚀 Features
 
-## 🚀 Funzionalità
-- Ricerca libri in base al genere
-- Visualizzazione dell'elenco di libri corrispondenti
-- Pagina dei dettagli di un libro con descrizione e altre informazioni
+- **Book Discovery**: Search and browse books by genre using the OpenLibrary API
+- **User Authentication**: Secure login, registration, and logout functionality
+- **Personal Library**: Save favorite books to your personal collection
+- **Book Borrowing System**: Simulate a library experience with a borrowing system
+- **Protected Routes**: Secure access to user-specific features
+- **Responsive Design**: Modern UI built with Tailwind CSS
+- **State Management**: Efficient data handling with Redux Toolkit
+- **API Integration**: Seamless communication with external APIs and local mock database
 
----
+## 🛠️ Tech Stack
 
-## 🛠️ Tecnologie utilizzate
-- ⚛️ **React** - Libreria per costruire l'interfaccia utente
-- 🏗️ **React Router v7** - Gestione della navigazione tra le pagine
-- 🎨 **Tailwind CSS** - Stile moderno e responsive
-- 🌍 **OpenAILibrary API** - Fonte dei dati sui libri
+- **Frontend Framework**: React 18 with TypeScript
+- **State Management**: Redux Toolkit
+- **Routing**: React Router v7
+- **Styling**: Tailwind CSS v4
+- **API Integration**: Axios
+- **Form Handling**: React Hook Form
+- **UI Components**: Radix UI
+- **Testing**: Jest
+- **Development**: Vite
+- **Mock Database**: JSON Server
 
----
+## 📦 Project Structure
 
-## 📦 Installazione e Avvio
-1. **Clonare il repository**
+```
+src/
+├── api/           # API integration and mock database
+├── components/    # Reusable UI components
+├── custom hooks/  # Custom React hooks
+├── features/      # Feature-specific components
+├── layouts/       # Layout components
+├── pages/         # Page components
+├── router/        # Route configuration
+├── services/      # Service layer
+├── store/         # Redux store configuration
+├── types/         # TypeScript type definitions
+├── App.tsx        # Root component
+└── main.tsx       # Application entry point
+```
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
    ```sh
-   git clone https://github.com/tuo-username/Search4YourBook.git
+   git clone https://github.com/EliaGiolli/Search4YourBook.git
    cd Search4YourBook
    ```
-2. **Installare le dipendenze**
+
+2. **Install dependencies**
    ```sh
    npm install
    ```
-3. **Avviare il server di sviluppo**
+
+3. **Start the development server**
    ```sh
    npm run dev
    ```
-4. Aprire il browser su `http://localhost:5173/` (se usi Vite) oppure `http://localhost:3000/` (se usi CRA)
 
----
+4. **Start the mock database server**
+   ```sh
+   npm run server
+   ```
 
-## 🔄 Comandi Git Utili
-Ecco alcuni comandi Git utili per gestire il progetto:
+5. Open your browser and navigate to `http://localhost:5173`
 
-- **Inizializzare un repository Git (se non è già stato fatto)**
-  ```sh
-  git init
-  ```
-- **Aggiungere tutti i file al commit**
-  ```sh
-  git add .
-  ```
-- **Creare un commit con un messaggio**
-  ```sh
-  git commit -m "Messaggio del commit"
-  ```
-- **Inviare le modifiche al repository remoto**
-  ```sh
-  git push origin main
-  ```
-- **Aggiornare il progetto con le ultime modifiche dal repository remoto**
-  ```sh
-  git pull origin main
-  ```
-  
-## 📖 API Utilizzata
-L'app si connette all'API **OpenAILibrary**, che fornisce dati sui libri in formato JSON.
+## 🔧 Development
 
-Esempio di richiesta:
+- **Development Server**: `npm run dev`
+- **Mock Database**: `npm run server`
+- **Build**: `npm run build`
+- **Linting**: `npm run lint`
+
+## 🧪 Testing
+
+The project uses Jest for testing. Run tests with:
 ```sh
-GET https://api.openailibrary.com/books?genre=Fantasy
-```
-Esempio di risposta:
-```json
-[
-  {
-    "id": 1,
-    "title": "Il Signore degli Anelli",
-    "author": "J.R.R. Tolkien",
-    "description": "Un'epica storia fantasy..."
-  }
-]
+npm test
 ```
 
----
+## 🔐 Authentication
 
-## 🔧 Struttura del Progetto
-```
-Search4YourBook/
-│── src/
-│   ├── components/   # Componenti UI
-│   ├── pages/        # Pagine dell'app
-│   ├── routes/       # Configurazione delle rotte
-│   ├── styles/       # File CSS (Tailwind)
-│   ├── App.jsx       # Componente principale
-│   ├── main.jsx      # Punto di ingresso
-│── public/
-│── package.json
-│── README.md
-```
+The application implements a complete authentication system:
+- User registration
+- Login/Logout functionality
+- Protected routes
+- User-specific features
 
----
+## 📚 Book Management
 
-## 🛠️ Possibili Miglioramenti
-- Aggiungere un sistema di **paginazione**
-- Implementare un **sistema di preferiti** per salvare libri
-- Integrare una funzione di **autocompletamento** nella ricerca
+- **Search**: Browse books by genre
+- **Favorites**: Save books to your personal collection
+- **Borrowing**: Simulate a library borrowing system
+- **Details**: View comprehensive book information
 
----
+## 🔄 API Integration
 
-## 📝 Licenza
-Questo progetto è rilasciato sotto la licenza MIT.
+The application integrates with:
+- OpenLibrary API for book data
+- Local JSON Server for user data and authentication
+- Redux Toolkit for state management
 
----
+## 🛠️ Future Improvements
 
-## 👨‍💻 Autore
-**Il tuo nome o username GitHub**
-- GitHub: [@tuo-username](https://github.com/EliaGiolli)
-- LinkedIn: [Il tuo profilo](https://www.linkedin.com/in/eliagiolli/)
+- Implement pagination for book listings
+- Add advanced search filters
+- Enhance the borrowing system with due dates
+- Add social features (reviews, ratings)
+- Implement real-time notifications
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+
+**Elia Giolli**
+- GitHub: [@EliaGiolli](https://github.com/EliaGiolli)
+- LinkedIn: [Elia Giolli](https://www.linkedin.com/in/eliagiolli/)
 

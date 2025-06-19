@@ -3,7 +3,7 @@ import authReducer from '../features/auth/authReducer'
 import themeReducer from '../features/theme/themeReducer'
 import { openLibraryApi } from "../features/api/apiReducer";
 import { favouritesApi } from "../features/api/favouritesApiReducer";
-
+import { loansApi } from "../features/api/loansApiReducer";
 
 export const store = configureStore({
     reducer: {
@@ -12,12 +12,14 @@ export const store = configureStore({
         //openLibraryApi.reducer is the reducer function that RTK Query provides to handle the API cache state.
         [openLibraryApi.reducerPath]: openLibraryApi.reducer,
         [favouritesApi.reducerPath]: favouritesApi.reducer,
+        [loansApi.reducerPath]: loansApi.reducer,
         theme: themeReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
             openLibraryApi.middleware,
-            favouritesApi.middleware
+            favouritesApi.middleware,
+            loansApi.middleware
         ),
 });
 
