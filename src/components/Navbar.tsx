@@ -1,16 +1,16 @@
-
 import { Link, NavLink } from 'react-router-dom'
-
+import { MobileNavMenu } from './MobileNavMenu';
 import ThemeSwitch from './ThemeSwitch'
 
 function Navbar() {
-    
+
   return (
     <nav className='bg-amber-700 flex justify-around items-center w-full max-h-20 border-b-2 border-b-yellow-300 sticky top-0 z-50 px-4 py-6'
       aria-label='primary-navigation'
     >
+      {/* Desktop menu */}
       <Link to='/home' className="font-bold text-3xl text-yellow-300 hidden md:block">ShelfSpot</Link>
-      <ul className='flex items-center text-center text-2xl gap-x-8'>
+      <ul className='hidden md:flex items-center text-center text-2xl gap-x-8'>
         <li>
           <NavLink 
             to='/home'
@@ -36,6 +36,9 @@ function Navbar() {
           </NavLink>
         </li>
       </ul>
+      {/* Mobile menu */}
+      <MobileNavMenu />
+      {/* Theme toggler button */}
       <ThemeSwitch />
     </nav>
   )
