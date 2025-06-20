@@ -57,18 +57,29 @@ export const router = createBrowserRouter([
         element: <MainLayout />,
         children: [
             {
-            path: 'home',
-            element: <Homepage />,
-            index: true,
+                path: 'home',
+                element: <Homepage />,
+                index: true,
             },
             {
-            path: 'books',
-            element: <SearchBook />,
-            index: true,
+                path: 'books',
+                element: <PrivateRoute requiredRole={userRole.Member} />,
+                children:[
+                    {
+                        element: <SearchBook />,
+                        index: true,
+                    }
+                ]
             },
             {
-            path: 'loans',
-            element: <LoansPage />,
+                path: 'loans',
+                element: <PrivateRoute requiredRole={userRole.Member} />,
+                children:[
+                    {
+                        element: <LoansPage />,
+                        index: true,
+                    }
+                ]
             },
         ],
     },

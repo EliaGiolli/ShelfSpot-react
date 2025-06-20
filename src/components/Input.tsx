@@ -15,7 +15,6 @@ const LabelDemo = ({className, handleInputChange, searchTerm}:InputProps) => (
             shadow-gray-300 outline-amber-500 focus:shadow-gray-400 border-2 border-amber-200"
 			type="text"
 			id="Book Genre"
-			defaultValue="Horror"
             value={searchTerm}
             onChange={handleInputChange}
 		/>

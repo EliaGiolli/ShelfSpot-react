@@ -5,7 +5,7 @@ import { RegisterFormData, LoginFormData, AuthState } from "../../types/formData
 
 const initialState: AuthState = {
   loading: false,
-  userInfo: null,
+  userInfo: JSON.parse(localStorage.getItem('userInfo') || 'null'), // <-- hydrate from localStorage
   error: null,
   success: false,
 };
@@ -26,7 +26,7 @@ export const registerUser = createAsyncThunk(
         password: userData.password, // In a real app, this should be hashed
         name: userData.name,
         lastName: userData.lastName,
-        role: userRole.Guest.toLowerCase()
+        role: userRole.Member.toLowerCase()
       });
       
       return response.data;

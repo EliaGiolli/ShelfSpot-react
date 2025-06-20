@@ -4,9 +4,14 @@ import { Loan } from '../../types/loans';
 export const loansApi = createApi({
   reducerPath: 'loansApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+  //it declares a tag called 'Loans' for cache management. 
+  //RTK wants to know which cached data should be invalidated or refetched after mutations
+  tagTypes: ['Loans'], 
   endpoints: (builder) => ({
     getLoans: builder.query<Loan[], string>({
       query: (userId) => `loans?userId=${userId}`,
+      //when a mutation affecting this user's loans happens, RTK Query knows exactly which cached data to invalidate and refetch
+      providesTags: (result, error, userId) => [{ type: 'Loans', id: userId }], 
     }),
     //A mutation is an API call that modifies the data on the server(POST, PATCH, DELETE, ecc)
     //This mutation creates a Loans object describing the HTTP request on success
@@ -16,6 +21,8 @@ export const loansApi = createApi({
         method: 'POST',
         body: newLoan,
       }),
+      //This triggers an automatic refetch of the user's loans, so the UI updates with the new loan.
+      invalidatesTags: (result, error, { userId }) => [{ type: 'Loans', id: userId }], 
     }),
     //It takes loadId as input and then updates an existing loans to mark it as returned with the UI
     //it also creates a Loans object that describes the HTTP request 
@@ -25,6 +32,8 @@ export const loansApi = createApi({
         method: 'PATCH',
         body: { returnDate: new Date().toISOString() },
       }),
+      //Ensures that any list of loans (for any user) is refetched, so the UI reflects the returned book.
+      invalidatesTags: ['Loans'], 
     }),
   }),
 });

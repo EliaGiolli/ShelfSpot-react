@@ -36,6 +36,22 @@
       "lastName": "b",
       "role": "guest",
       "id": "4S74s_V"
+    },
+    {
+      "email": "elia1@gmail.com",
+      "password": "aaazzz",
+      "name": "elia",
+      "lastName": "giolli",
+      "role": "guest",
+      "id": "zA7TqrF"
+    },
+    {
+      "email": "e@gmail.com",
+      "password": "aaazzz",
+      "name": "elia",
+      "lastName": "giolli",
+      "role": "member",
+      "id": "TWfpMHd"
     }
   ],
   "loans": [
@@ -47,6 +63,24 @@
       "bookId": "10",
       "borrowDate": "2025-06-01T10:00:00Z",
       "dueDate": "2025-06-15T10:00:00Z"
+    },
+    {
+      "userId": "TWfpMHd",
+      "userName": "elia",
+      "lastName": "giolli",
+      "bookId": "10",
+      "bookTitle": "Coloring Book",
+      "loanDate": "2025-06-20T13:12:25.993Z",
+      "id": "5rbzA-L"
+    },
+    {
+      "userId": "TWfpMHd",
+      "userName": "elia",
+      "lastName": "giolli",
+      "bookId": "5",
+      "bookTitle": "Anne's House of Dreams",
+      "loanDate": "2025-06-20T13:12:41.630Z",
+      "id": "pixbXhr"
     }
   ],
   "favourites": [
@@ -78,6 +112,22 @@
       "bookId": "/works/OL85891W",
       "bookTitle": "The Jewel of Seven Stars",
       "id": "tl4FMA1"
+    },
+    {
+      "userId": "TWfpMHd",
+      "userName": "elia",
+      "lastName": "giolli",
+      "bookId": "/works/OL85891W",
+      "bookTitle": "The Jewel of Seven Stars",
+      "id": "bN1CSSV"
+    },
+    {
+      "userId": "TWfpMHd",
+      "userName": "elia",
+      "lastName": "giolli",
+      "bookId": "/works/OL81626W",
+      "bookTitle": "Carrie",
+      "id": "ZwQxWaE"
     }
   ]
 }

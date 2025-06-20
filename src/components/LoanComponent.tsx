@@ -17,7 +17,7 @@ function LoanComponent({ loan, onReturned }:LoanComponentProps) {
 
   return (
     <li className="flex justify-between items-center border-b py-3">
-      <div>
+      <div className='flex flex-col'>
         <p className="font-semibold">{loan.bookTitle}</p>
         <p className="text-sm text-gray-600">Loaned on: {new Date(loan.loanDate).toLocaleDateString()}</p>
         {loan.returnDate ? (
@@ -25,16 +25,16 @@ function LoanComponent({ loan, onReturned }:LoanComponentProps) {
         ) : (
           <p className="text-sm text-gray-600">Status: On Loan</p>
         )}
-      </div>
       {!loan.returnDate && (
         <button
           onClick={handleReturn}
           disabled={isLoading}
-          className="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 disabled:opacity-50"
+          className="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 disabled:opacity-50 mt-6 mb-2"
         >
           {isLoading ? 'Returning...' : 'Return Book'}
         </button>
       )}
+      </div>
     </li>
   )
 }
