@@ -26,7 +26,7 @@ const ThemeSwitch = () => {
         <>
             <div className="flex items-center">
                 <label
-                    className="pr-4 text-base font-medium text-yellow-300 dark:text-yellow-600"
+                    className="pr-4 text-base font-medium text-white"
                     htmlFor="theme-switch"
                 >
                     Theme Switch
@@ -38,7 +38,7 @@ const ThemeSwitch = () => {
                 id="theme-switch"
                 aria-label="toggle light and dark theme"
                 onCheckedChange={() => dispatch(toggleTheme())}
-                checked={theme === 'dark'}
+                checked={theme === 'light'}
             >
                 <Switch.Thumb
                 className="

@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useBorrowApi } from "../custom hooks/useBorrowApi";
 import { useOnSubmit } from "../custom hooks/useOnSubmit";
 import { BorrowBookFormInput, BorrowFormData } from "../types/loans";
+import { useTheme } from '../custom hooks/useTheme';
 
 function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormData) {
   const {
@@ -21,6 +22,16 @@ function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormDat
     error,
   } = useBorrowApi();
 
+  const theme = useTheme();
+
+  // Theme-based classes
+  const formBg = theme === 'light' ? 'bg-white' : 'bg-amber-950';
+  const labelText = theme === 'light' ? 'text-amber-700' : 'text-amber-200';
+  const inputBg = theme === 'light' ? 'bg-amber-50 border-amber-300 text-gray-900' : 'bg-amber-900 border-amber-700 text-amber-100';
+  const buttonBg = theme === 'light'
+    ? 'bg-amber-600 hover:bg-amber-700 text-white'
+    : 'bg-amber-800 hover:bg-amber-900 text-amber-100';
+
   const onSubmit = useOnSubmit({
     borrowBook,
     userId,
@@ -33,9 +44,12 @@ function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormDat
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto space-y-6">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={`max-w-md mx-auto space-y-6 p-6 rounded-lg shadow-md ${formBg}`}
+    >
       <div>
-        <label htmlFor="bookId" className="block font-semibold mb-1">
+        <label htmlFor="bookId" className={`block font-semibold mb-1 ${labelText}`}>
           Book ID
         </label>
         <input
@@ -44,7 +58,7 @@ function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormDat
           {...register("bookId", { required: true })}
           value={bookId}
           onChange={e => setBookId(e.target.value)}
-          className="w-full p-2 rounded border"
+          className={`w-full p-2 rounded border ${inputBg}`}
         />
         {isBookLoading && <p className="text-sm text-gray-500">Fetching book info...</p>}
         {bookTitle && <p className="text-sm text-green-700">Book Title: {bookTitle}</p>}
@@ -52,7 +66,7 @@ function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormDat
       </div>
       <button
         type="submit"
-        className="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 disabled:opacity-50"
+        className={`px-4 py-2 rounded disabled:opacity-50 ${buttonBg}`}
         disabled={isSubmitting || isBookLoading || !bookTitle}
       >
         Borrow Book
