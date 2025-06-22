@@ -5,9 +5,9 @@ function Reviews() {
 
   const theme = useTheme();
    // Theme-based classes
-  const background = theme === 'light' ? 'bg-white' : 'bg-amber-950';
-  const subtitle = theme === 'light' ? 'text-amber-700' : 'text-amber-300';
-  const quoteBg = theme === 'light' ? 'bg-amber-50 text-gray-800' : 'bg-amber-900 text-white';
+  const background = theme === 'light' ? 'bg-white' : 'bg-slate-900';
+  const subtitle = theme === 'light' ? 'text-amber-700' : 'text-yellow-300';
+  const quoteBg = theme === 'light' ? 'bg-amber-50 text-gray-800' : 'bg-slate-800 text-yellow-100';
   
   return (
     <>

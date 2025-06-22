@@ -6,13 +6,13 @@ function AccordionFAQs() {
   const theme = useTheme();
 
   // Theme-based classes
-  const sectionBg = theme === 'light' ? 'bg-white' : 'bg-amber-950';
-  const headingText = theme === 'light' ? 'text-amber-700' : 'text-amber-300';
-  const itemBg = theme === 'light' ? 'bg-amber-50' : 'bg-amber-900';
-  const triggerText = theme === 'light' ? 'text-amber-700' : 'text-amber-200';
-  const triggerHover = theme === 'light' ? 'hover:bg-amber-100' : 'hover:bg-amber-800';
-  const triggerFocus = theme === 'light' ? 'focus-visible:ring-amber-400' : 'focus-visible:ring-amber-700';
-  const contentText = theme === 'light' ? 'text-gray-700' : 'text-amber-100';
+  const sectionBg = theme === 'light' ? 'bg-white' : 'bg-slate-900';
+  const headingText = theme === 'light' ? 'text-amber-700' : 'text-yellow-300';
+  const itemBg = theme === 'light' ? 'bg-amber-50' : 'bg-slate-800';
+  const triggerText = theme === 'light' ? 'text-amber-700' : 'text-yellow-200';
+  const triggerHover = theme === 'light' ? 'hover:bg-amber-100' : 'hover:bg-slate-700';
+  const triggerFocus = theme === 'light' ? 'focus-visible:ring-amber-400' : 'focus-visible:ring-yellow-600';
+  const contentText = theme === 'light' ? 'text-gray-700' : 'text-yellow-100';
 
   return (
     <>

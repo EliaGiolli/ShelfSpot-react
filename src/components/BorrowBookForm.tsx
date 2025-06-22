@@ -24,13 +24,15 @@ function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormDat
 
   const theme = useTheme();
 
-  // Theme-based classes
-  const formBg = theme === 'light' ? 'bg-white' : 'bg-amber-950';
-  const labelText = theme === 'light' ? 'text-amber-700' : 'text-amber-200';
-  const inputBg = theme === 'light' ? 'bg-amber-50 border-amber-300 text-gray-900' : 'bg-amber-900 border-amber-700 text-amber-100';
+  //Theme-based classes
+  const formBg = theme === 'light' ? 'bg-white' : 'bg-slate-900';
+  const labelText = theme === 'light' ? 'text-amber-700' : 'text-yellow-300';
+  const inputBg = theme === 'light'
+    ? 'bg-amber-50 border-amber-300 text-gray-900'
+    : 'bg-slate-800 border-slate-700 text-yellow-100';
   const buttonBg = theme === 'light'
     ? 'bg-amber-600 hover:bg-amber-700 text-white'
-    : 'bg-amber-800 hover:bg-amber-900 text-amber-100';
+    : 'bg-yellow-600 hover:bg-yellow-700 text-zinc-900';
 
   const onSubmit = useOnSubmit({
     borrowBook,

@@ -5,11 +5,11 @@ function Benefits() {
 
   const theme = useTheme();
    // Theme-based classes
-  const bgSection = theme === 'light' ? 'bg-amber-50' : 'bg-amber-950';
-  const subtTitle = theme === 'light' ? 'text-amber-700' : 'text-amber-300';
-  const cardBg = theme === 'light' ? 'bg-white' : 'bg-amber-900';
-  const cardSubtitle = theme === 'light' ? 'text-amber-700' : 'text-amber-300';
-  const cardText = theme === 'light' ? 'text-gray-700' : 'text-white' ;
+  const bgSection = theme === 'light' ? 'bg-amber-50' : 'bg-slate-900';
+  const subtTitle = theme === 'light' ? 'text-amber-700' : 'text-yellow-300';
+  const cardBg = theme === 'light' ? 'bg-white' : 'bg-slate-800';
+  const cardSubtitle = theme === 'light' ? 'text-amber-700' : 'text-yellow-200';
+  const cardText = theme === 'light' ? 'text-gray-700' : 'text-yellow-100' ;
 
   return (
     <>

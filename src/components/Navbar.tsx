@@ -7,12 +7,12 @@ function Navbar() {
   const theme = useTheme();
 
   //Theme-based classes
-  const navBg = theme === 'light' ? 'bg-amber-700 border-b-yellow-300' : 'bg-amber-900 border-b-yellow-500';
+  const navBg = theme === 'light' ? 'bg-amber-700 border-b-yellow-300' : 'bg-slate-900 border-b-yellow-200';
   const linkText = theme === 'light' ? 'text-yellow-300' : 'text-yellow-200';
   const navLink = (isActive: boolean) =>
     isActive
       ? `${linkText} underline`
-      : `text-gray-200 hover:text-yellow-300 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded`;
+      : `text-yellow-100 hover:text-yellow-300 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded`;
 
   return (
     <nav

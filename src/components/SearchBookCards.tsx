@@ -1,27 +1,32 @@
-import { Books, BooksProps } from '../types/book'
+import { Book, BookProps } from '../types/book'
 import Button from './Button'
 import { useAddToFavouritesMutation } from '../features/api/favouritesApiReducer'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/store'
+import { useTheme } from '../custom hooks/useTheme';
 
-
-function SearchBookCards({ books }:BooksProps) {
-
+function SearchBookCards({ books }:BookProps) {
+  const theme = useTheme();
   const currentUser = useSelector((state:RootState) =>state.auth.userInfo);
-  const userId = currentUser?.id; //it uses the correct property from the auth state
+  const userId = currentUser?.id;
 
   const [ addToFavourites, { isLoading, error }] = useAddToFavouritesMutation();
-  
-  const handleAddToFavourites = async (bookId:string, bookTitle:string) => {
 
+  // Theme based classes
+  const cardBg = theme === 'light' ? 'bg-white' : 'bg-slate-800';
+  const border = theme === 'light' ? 'border-amber-700' : 'border-slate-800';
+  const text = theme === 'light' ? 'text-gray-900' : 'text-yellow-100';
+  const title = theme === 'light' ? 'text-yellow-600' : 'text-yellow-300';
+
+  const handleAddToFavourites = async (bookId:string, bookTitle:string) => {
     try {
       await addToFavourites({
-        userId: userId!, //asserts non-null if authenticated 
+        userId: userId!,
         userName: currentUser?.name,
         lastName: currentUser?.lastName,
         bookId,
         bookTitle,
-      }).unwrap() //Unwraps a mutation call to provide the raw response/error
+      }).unwrap()
     }catch( error ) {
       console.error('Failed to add favourites', error);
     }
@@ -29,8 +34,8 @@ function SearchBookCards({ books }:BooksProps) {
 
   return (
     <>
-        {(books ?? []).slice(0,20).map((book: Books) => (
-          <article key={book.key} className="flex flex-col mb-4 bg-white border-b border-amber-700 text-gray-900 rounded-lg shadow">
+        {(books ?? []).slice(0,20).map((book: Book) => (
+          <article key={book.key} className={`flex flex-col mb-4 ${cardBg} ${border} ${text} rounded-lg shadow`}>
            <div className='overflow-hidden rounded-t-lg'>
             <img
               src={book.cover_i ? 
@@ -41,7 +46,7 @@ function SearchBookCards({ books }:BooksProps) {
                 className='w-full object-cover h-48 rounded-t-lg' />
             </div>
            <div className='px-4 py-3 my-4 h-[150px]'>
-            <h3 className="font-bold text-lg text-yellow-600">{book.title}</h3>
+            <h3 className={`font-bold text-lg ${title}`}>{book.title}</h3>
               <p className='text-sm'>Author: {book.author ? book.author.join(', ') : 'Unknown'}</p>
               <p className='text-sm'>Year: {book.first_publish_year || 'Unknown'}</p>
               <p className='text-sm'>Subject: {book.subject ? book.subject[0] : 'Not specified'}</p>
@@ -62,4 +67,4 @@ function SearchBookCards({ books }:BooksProps) {
   )
 }
 
-export default SearchBookCards
+export default SearchBookCards;

@@ -10,7 +10,7 @@ function MainLayout() {
   return (
     <>
       <Navbar />
-      <main className={`${theme === 'light' ? 'bg-amber-50' : 'bg-amber-600'} min-h-screen flex flex-col`}>
+      <main className={`${theme === 'light' ? 'bg-amber-50' : 'bg-zinc-900'} min-h-screen flex flex-col`}>
        <Outlet />
       </main>
       <Footer />
