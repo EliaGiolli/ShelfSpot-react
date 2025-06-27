@@ -82,6 +82,15 @@
       "bookTitle": "Anne's House of Dreams",
       "loanDate": "2025-06-20T13:12:41.630Z",
       "id": "pixbXhr"
+    },
+    {
+      "id": "9246",
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "77",
+      "bookTitle": "History of the Decline and Fall of the Roman Empire Complete and Unabridged",
+      "loanDate": "2025-06-27T12:18:44.957Z"
     }
   ],
   "favourites": [
@@ -137,6 +146,14 @@
       "bookId": "/works/OL85892W",
       "bookTitle": "Dracula",
       "id": "Faa43zw"
+    },
+    {
+      "id": "897f",
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "/works/OL15450W",
+      "bookTitle": "Phantastes"
     }
   ]
 }

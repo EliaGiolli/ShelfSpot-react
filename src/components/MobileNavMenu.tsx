@@ -7,7 +7,7 @@ export function MobileNavMenu() {
 
   const theme = useTheme();
   // Theme-based classes
-  const menuBg = theme === 'light' ? 'bg-amber-800' : 'bg-amber-950';
+  const menuBg = theme === 'light' ? 'bg-amber-800' : 'bg-slate-900';
   const button = theme === 'light' ? 'bg-amber-400 hover:bg-amber-600 text-white focus:ring-yellow-300' : 'bg-yellow-400 hover:bg-yellow-600 text-white focus:ring-yellow-700';
   const linkActive = theme === 'light' ? 'text-yellow-300 underline text-xl' : 'text-yellow-200 underline text-xl';
   const link = theme === 'light'
