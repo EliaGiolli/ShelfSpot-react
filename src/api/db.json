@@ -91,6 +91,16 @@
       "bookId": "77",
       "bookTitle": "History of the Decline and Fall of the Roman Empire Complete and Unabridged",
       "loanDate": "2025-06-27T12:18:44.957Z"
+    },
+    {
+      "id": "b364",
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "10",
+      "bookTitle": "Coloring Book",
+      "loanDate": "2025-06-27T12:49:58.302Z",
+      "returnDate": "2025-06-27T12:55:49.275Z"
     }
   ],
   "favourites": [

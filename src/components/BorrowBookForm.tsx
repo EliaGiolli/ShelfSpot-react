@@ -4,6 +4,8 @@ import { useOnSubmit } from "../custom hooks/useOnSubmit";
 import { BorrowBookFormInput, BorrowFormData } from "../types/loans";
 import { useTheme } from '../custom hooks/useTheme';
 
+import Button from "./Button";
+
 function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormData) {
   const {
     register,
@@ -32,7 +34,7 @@ function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormDat
     : 'bg-slate-800 border-slate-700 text-yellow-100';
   const buttonBg = theme === 'light'
     ? 'bg-amber-600 hover:bg-amber-700 text-white'
-    : 'bg-yellow-600 hover:bg-yellow-700 text-zinc-900';
+    : 'bg-yellow-400 hover:bg-yellow-600 text-zinc-900';
 
   const onSubmit = useOnSubmit({
     borrowBook,
@@ -48,10 +50,10 @@ function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormDat
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className={`max-w-md mx-auto space-y-6 p-6 rounded-lg shadow-md ${formBg}`}
+      className={`max-w-md mx-auto space-y-6 p-6 ${formBg}`}
     >
-      <div>
-        <label htmlFor="bookId" className={`block font-semibold mb-1 ${labelText}`}>
+      <div className="flex flex-col items-center">
+        <label htmlFor="bookId" className={`block text-xl font-semibold mb-4 ${labelText}`}>
           Book ID
         </label>
         <input
@@ -63,16 +65,19 @@ function BorrowBookForm({ userId, userName, lastName, onSuccess }: BorrowFormDat
           className={`w-full p-2 rounded border ${inputBg}`}
         />
         {isBookLoading && <p className="text-sm text-gray-500">Fetching book info...</p>}
-        {bookTitle && <p className="text-sm text-green-700">Book Title: {bookTitle}</p>}
+        {bookTitle && <p className="text-sm text-slate-900">Book Title: {bookTitle}</p>}
         {errors.bookId && <span className="text-red-600">Book ID is required</span>}
       </div>
-      <button
-        type="submit"
-        className={`px-4 py-2 rounded disabled:opacity-50 ${buttonBg}`}
-        disabled={isSubmitting || isBookLoading || !bookTitle}
-      >
-        Borrow Book
-      </button>
+      <div className="flex justify-center">
+        <Button
+          type="submit"
+          className={`px-4 py-2 rounded disabled:opacity-60 ${buttonBg}`}
+          disabled={isSubmitting || isBookLoading || !bookTitle}
+          aria-label="loans button"
+        >
+          Borrow Book
+        </Button>
+      </div>
       {error && <p className="text-red-600">Error borrowing book.</p>}
     </form>
   );

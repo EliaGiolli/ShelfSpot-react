@@ -1,16 +1,15 @@
-import { Loan,LoanComponentProps } from '../types/loans';
+import { LoanComponentProps } from '../types/loans';
 import { useReturnBookMutation } from '../features/api/loansApiReducer';
 import { useTheme } from '../custom hooks/useTheme';
+
+import Button from './Button';
 
 function LoanComponent({ loan, onReturned }:LoanComponentProps) {
   // Theme-based classes
   const theme = useTheme();
-  const itemBg = theme === 'light' ? 'bg-white' : 'bg-slate-800';
+  const itemBg = theme === 'light' ? 'bg-white' : 'bg-slate-900';
   const text = theme === 'light' ? 'text-gray-900' : 'text-yellow-100';
   const subText = theme === 'light' ? 'text-gray-600' : 'text-yellow-300';
-  const btn = theme === 'light'
-    ? 'bg-amber-600 text-white hover:bg-amber-700'
-    : 'bg-yellow-600 text-white hover:bg-yellow-700';
 
   const [returnBook, { isLoading }] = useReturnBookMutation();
 
@@ -34,13 +33,13 @@ function LoanComponent({ loan, onReturned }:LoanComponentProps) {
           <p className={`text-sm ${subText}`}>Status: On Loan</p>
         )}
       {!loan.returnDate && (
-        <button
+        <Button
           onClick={handleReturn}
           disabled={isLoading}
-          className={`px-4 py-2 rounded disabled:opacity-50 mt-6 mb-2 ${btn}`}
+          className="disabled:opacity-50 mt-6 mb-2"
         >
           {isLoading ? 'Returning...' : 'Return Book'}
-        </button>
+        </Button>
       )}
       </div>
     </li>

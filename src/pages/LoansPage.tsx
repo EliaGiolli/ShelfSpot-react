@@ -20,8 +20,8 @@ function LoansPage() {
 
   return (
     <main className={`max-w-4xl mx-auto p-6 ${mainBg}`}>
-      <section className={`mb-12 rounded-lg shadow ${sectionBg}`}>
-        <h2 className={`text-2xl font-bold mb-4 p-2 ${heading}`}>Your Current Loans</h2>
+      <section className={`mb-12 rounded-lg shadow ${sectionBg} p-6`}>
+        <h2 className={`text-2xl font-bold mb-4 text-center p-2 ${heading}`}>Your Current Loans</h2>
         {isLoading && <p>Loading loans...</p>}
         {error && <p className={`p-4 rounded-md ${errorMsg}`}>Failed to load loans.</p>}
         {!loans?.length && !isLoading && <p>No current loans.</p>}
@@ -31,7 +31,7 @@ function LoansPage() {
           ))}
         </ul>
       </section>
-      <section className={`rounded-lg shadow ${sectionBg}`}>
+      <section className={` ${sectionBg} flex flex-col text-center p-6`}>
         <h2 className={`text-2xl font-bold mb-4 p-2 ${heading}`}>Borrow a Book</h2>
         <BorrowBookForm
           userId={userId}
