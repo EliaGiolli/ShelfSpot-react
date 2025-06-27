@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "test@example.com",
       "password": "password123",
       "name": "Test",
@@ -71,7 +71,8 @@
       "bookId": "10",
       "bookTitle": "Coloring Book",
       "loanDate": "2025-06-20T13:12:25.993Z",
-      "id": "5rbzA-L"
+      "id": "5rbzA-L",
+      "returnDate": "2025-06-27T10:02:21.316Z"
     },
     {
       "userId": "TWfpMHd",

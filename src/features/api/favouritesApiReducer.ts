@@ -3,7 +3,7 @@ import { Favourites } from "../../types/book";
 
 export const favouritesApi = createApi({
     reducerPath: 'favouritesApi',
-    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:5000/'}),
+    baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_BASE_URL }),
     //This cached data by RTK Query is associated with tags that describe what kind of data it represents
     tagTypes: ['Favourites'],
     endpoints: (builder) =>({

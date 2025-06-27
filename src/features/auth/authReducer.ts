@@ -10,18 +10,20 @@ const initialState: AuthState = {
   success: false,
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData: RegisterFormData, { rejectWithValue }) => {
     try {
       // Check if user already exists
-      const existingUser = await axios.get(`http://localhost:5000/users?email=${userData.email}`);
+      const existingUser = await axios.get(`${API_BASE_URL}users?email=${userData.email}`);
       if (existingUser.data.length > 0) {
         throw new Error('User already exists');
       }
 
       // Create new user with lowercase role
-      const response = await axios.post("http://localhost:5000/users", {
+      const response = await axios.post(`${API_BASE_URL}users`, {
         email: userData.email,
         password: userData.password, // In a real app, this should be hashed
         name: userData.name,
@@ -45,7 +47,7 @@ export const userLogin = createAsyncThunk(
   async (credentials: LoginFormData, { rejectWithValue }) => {
     try {
       // Find user by email
-      const response = await axios.get(`http://localhost:5000/users?email=${credentials.email}`);
+      const response = await axios.get(`${API_BASE_URL}users?email=${credentials.email}`);
       const user = response.data[0];
       
       if (!user) {

@@ -3,7 +3,7 @@ import { Loan } from '../../types/loans';
 
 export const loansApi = createApi({
   reducerPath: 'loansApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_BASE_URL }),
   //it declares a tag called 'Loans' for cache management. 
   //RTK wants to know which cached data should be invalidated or refetched after mutations
   tagTypes: ['Loans'], 
