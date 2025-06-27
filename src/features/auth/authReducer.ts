@@ -80,12 +80,14 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
+      console.log('logout reducer triggered')
       state.loading = false;
       state.userInfo = null;
       state.error = null;
       state.success = false;
     },
   },
+  //extraReducers handle external actions such as async thunks or actions definded outside the slice
   extraReducers: (builder) => {
     builder
       // Login

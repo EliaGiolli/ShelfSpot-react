@@ -3,7 +3,7 @@ import { ReactNode, ChangeEvent } from "react"
 export interface ButtonProps {
     className?: string,
     children?: ReactNode
-    onClick: () => void
+    onClick?: () => void
     disabled?: boolean
 }
 

@@ -8,6 +8,7 @@ export function MobileNavMenu() {
   const theme = useTheme();
   // Theme-based classes
   const menuBg = theme === 'light' ? 'bg-amber-800' : 'bg-amber-950';
+  const button = theme === 'light' ? 'bg-amber-400 hover:bg-amber-600 text-white focus:ring-yellow-300' : 'bg-yellow-400 hover:bg-yellow-600 text-white focus:ring-yellow-700';
   const linkActive = theme === 'light' ? 'text-yellow-300 underline text-xl' : 'text-yellow-200 underline text-xl';
   const link = theme === 'light'
     ? 'text-gray-100 hover:text-yellow-300 transition-colors text-xl'
@@ -17,7 +18,7 @@ export function MobileNavMenu() {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <button
-          className="md:hidden inline-flex items-center justify-center rounded-full bg-amber-700 p-2 text-white shadow focus:outline-none focus:ring-2 focus:ring-yellow-300"
+          className={`${button} md:hidden inline-flex items-center justify-center rounded-full p-2 shadow focus:outline-none focus:ring-2`}
           aria-label="Toggle navigation menu"
         >
           <HamburgerMenuIcon className="w-6 h-6" />

@@ -22,20 +22,19 @@ function Register() {
     }
   }
   
-  // Theme-based classes
-  const bg = theme === 'light' ? 'bg-amber-50' : 'bg-amber-950';
-  const formBg = theme === 'light' ? 'bg-white' : 'bg-amber-900';
-  const heading = theme === 'light' ? 'text-gray-900' : 'text-amber-100';
-  const label = theme === 'light' ? 'text-gray-700' : 'text-amber-200';
+  // Theme-based classes;
+  const formBg = theme === 'light' ? 'bg-white' : 'bg-slate-900';
+  const heading = theme === 'light' ? 'text-gray-900' : 'text-amber-200';
+  const label = theme === 'light' ? 'text-gray-700' : 'text-amber-100';
   const input = theme === 'light'
-    ? 'bg-white border-gray-300 text-gray-900'
-    : 'bg-amber-950 border-amber-700 text-amber-100';
+    ? 'bg-gray-50 hover:bg-amber-100 outline-amber-500 focus:shadow-gray-400 border-2 border-amber-200 text-gray-900'
+    : 'bg-slate-700 hover:bg-slate-800 outline-yellow-400 focus:shadow-yellow-900 border-2 border-slate-700 text-yellow-100';
   const errorMsg = theme === 'light'
     ? 'text-red-600 bg-red-100'
     : 'text-red-400 bg-red-900';
 
   return (
-    <div className={`flex items-center justify-center min-h-screen ${bg} p-6`}>
+    <div className="flex items-center justify-center min-h-screen p-6">
       <Form.Root
         className={`w-full max-w-md rounded-xl shadow-lg p-8 ${formBg}`}
         method="GET"
@@ -146,14 +145,14 @@ function Register() {
         <Form.Submit asChild>
           <button
             type="submit"
-            className="w-full bg-amber-500 text-white font-semibold py-3 rounded-md hover:bg-amber-600 focus:outline-none focus:ring-4 focus:ring-amber-300 transition"
+            className="w-full bg-yellow-400 text-white font-semibold py-3 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-amber-300 transition"
           >
             Register
           </button>
         </Form.Submit>
         <p className={`mt-4 text-center ${label}`}>
           You already have an account?{' '}
-          <Link to="/login" className="text-amber-600 hover:underline font-semibold">
+          <Link to="/login" className="text-yellow-500 hover:underline font-semibold">
             Log in now!
           </Link>
         </p>

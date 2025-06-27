@@ -14,13 +14,13 @@ const ThemeSwitch = () => {
     // If you want to keep it for future-proofing, that's fine.
 
     // Theme-based classes for modern palette
-    const labelText = theme === 'light' ? 'text-amber-700' : 'text-yellow-300';
+    const labelText = theme === 'light' ? 'text-gray-200' : 'text-yellow-300';
     const switchBg = theme === 'light'
         ? 'bg-amber-100 data-[state=checked]:bg-amber-500'
         : 'bg-slate-800 data-[state=checked]:bg-yellow-600';
     const thumbBg = theme === 'light'
         ? 'bg-yellow-300'
-        : 'bg-yellow-400';
+        : 'bg-yellow-400 hover:bg-yellow-600';
 
     return (
         <div className="flex items-center">
@@ -28,12 +28,12 @@ const ThemeSwitch = () => {
                 className={`pr-4 text-base font-medium ${labelText}`}
                 htmlFor="theme-switch"
             >
-                Theme Switch
+                Theme
             </label>
             <Switch.Root
                 className={`
                   relative h-[25px] w-[42px] cursor-pointer rounded-full 
-                  shadow-md outline-none focus:shadow-[0_0_0_2px] 
+                  shadow-md outline-none 
                   ${switchBg} transition-colors
                 `}
                 id="theme-switch"

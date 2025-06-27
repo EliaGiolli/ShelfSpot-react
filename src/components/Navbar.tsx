@@ -1,10 +1,21 @@
 import { Link, NavLink } from 'react-router-dom'
 import { MobileNavMenu } from './MobileNavMenu';
+import Button from './Button';
 import ThemeSwitch from './ThemeSwitch'
+
 import { useTheme } from '../custom hooks/useTheme';
+import { useDispatch } from 'react-redux';
+import { logout } from '../features/auth/authReducer';
+
+import { LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 function Navbar() {
+
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //Theme-based classes
   const navBg = theme === 'light' ? 'bg-amber-700 border-b-yellow-300' : 'bg-slate-900 border-b-yellow-200';
@@ -13,6 +24,14 @@ function Navbar() {
     isActive
       ? `${linkText} underline`
       : `text-yellow-100 hover:text-yellow-300 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded`;
+
+  //Log-out logic
+  const handleLogout = () =>{
+    console.log('logout checked')
+    dispatch(logout());
+    localStorage.removeItem('userInfo');
+    navigate('/login');
+  }
 
   return (
     <nav
@@ -40,10 +59,16 @@ function Navbar() {
           </NavLink>
         </li>
       </ul>
-      {/* Mobile menu */}
-      <MobileNavMenu />
-      {/* Theme toggler button */}
-      <ThemeSwitch />
+      <section className='flex justify-center items-center text-center gap-8 '>
+        {/* Mobile menu */}
+        <MobileNavMenu />
+        {/* Theme toggler button */}
+        <ThemeSwitch />
+          {/* Logout button */}
+        <Button onClick={handleLogout}>
+           <LogOut />   
+        </ Button>
+      </section>
     </nav>
   );
 }
