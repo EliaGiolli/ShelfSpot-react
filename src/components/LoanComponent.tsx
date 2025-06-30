@@ -37,6 +37,7 @@ function LoanComponent({ loan, onReturned }:LoanComponentProps) {
           onClick={handleReturn}
           disabled={isLoading}
           className="disabled:opacity-50 mt-6 mb-2"
+          aria-label="return book"
         >
           {isLoading ? 'Returning...' : 'Return Book'}
         </Button>

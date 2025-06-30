@@ -1,7 +1,7 @@
 import { ButtonProps } from "../types/customProps";
 import { useTheme } from '../custom hooks/useTheme';
 
-function Button({children, onClick, className}:ButtonProps) {
+function Button({children, onClick, className, type, disabled}:ButtonProps) {
   // Theme-based classes
   const theme = useTheme();
   const btn = theme === 'light'
@@ -12,6 +12,8 @@ function Button({children, onClick, className}:ButtonProps) {
     <button
       className={`p-2 rounded-md shadow ${btn} ${className ?? ''}`}
       onClick={onClick}
+      type={type}
+      disabled={disabled}
     >
       { children }
     </button>
