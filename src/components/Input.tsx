@@ -26,7 +26,7 @@ const LabelDemo = ({ className, handleInputChange, searchTerm }: InputProps) => 
             <input
                 className={inputClass}
                 type="text"
-                id="Book Genre"
+                id="Book genre"
                 value={searchTerm}
                 onChange={handleInputChange}
             />
