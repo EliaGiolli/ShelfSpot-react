@@ -75,6 +75,8 @@ src/
 - **Mock Database**: `npm run server`
 - **Build**: `npm run build`
 - **Linting**: `npm run lint`
+- **test**: `npm run test`,
+- **test:ui**: `npm run test:ui`
 
 ## 🧪 Testing
 
