@@ -19,10 +19,10 @@ Search4YourBook is a modern web application that allows users to explore and man
 - **State Management**: Redux Toolkit
 - **Routing**: React Router v7
 - **Styling**: Tailwind CSS v4
-- **API Integration**: Axios
+- **API Integration**: Axios, Redux Toolkit Query
 - **Form Handling**: React Hook Form
 - **UI Components**: Radix UI
-- **Testing**: Jest
+- **Testing**: Vitest, @testing-library/react, @testing-library/user-event, @testing-library/jest-dom
 - **Development**: Vite
 - **Mock Database**: JSON Server
 
@@ -105,9 +105,41 @@ The application integrates with:
 - Local JSON Server for user data and authentication
 - Redux Toolkit for state management
 
+## 🧪 Testing
+
+This project uses [Vitest](https://vitest.dev/) as the test runner, along with [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/), [@testing-library/user-event](https://testing-library.com/docs/user-event/intro/), and [@testing-library/jest-dom](https://github.com/testing-library/jest-dom) for writing and asserting UI tests.
+
+### Running Tests
+
+You can run all tests from the command line using:
+
+```sh
+npm test
+```
+
+This will execute all test files (e.g., [`Button.test.tsx`](src/components/Button.test.tsx), [`Input.test.tsx`](src/components/Input.test.tsx)) in your project and display the results in the console.
+
+### Interactive Test UI
+
+To run tests with the Vitest UI (for a visual, interactive experience):
+
+```sh
+npm run test:ui
+```
+
+This will open a browser window where you can see test results, re-run tests, and debug interactively.
+
+### Notes
+
+- All test files should be named with `.test.tsx` or `.test.ts` and placed alongside the components or in a `__tests__` folder.
+- You can use the full power of Testing Library and Vitest for component, integration, and unit tests.
+- For more information, see the [Vitest documentation](https://vitest.dev/guide/) and [Testing Library docs](https://testing-library.com/docs/).
+
+
 ## 🛠️ Future Improvements
 
 - Implement pagination for book listings
+- Implement a real backend server + DB with Express.js and MongoDB
 - Add advanced search filters
 - Enhance the borrowing system with due dates
 - Add social features (reviews, ratings)
