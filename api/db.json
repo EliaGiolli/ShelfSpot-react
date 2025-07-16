@@ -101,6 +101,15 @@
       "bookTitle": "Coloring Book",
       "loanDate": "2025-06-27T12:49:58.302Z",
       "returnDate": "2025-06-27T12:55:49.275Z"
+    },
+    {
+      "id": "8bbc",
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "1",
+      "bookTitle": "Ranma 1/2",
+      "loanDate": "2025-07-16T20:02:42.656Z"
     }
   ],
   "favourites": [
@@ -164,6 +173,14 @@
       "lastName": "Bianchi",
       "bookId": "/works/OL15450W",
       "bookTitle": "Phantastes"
+    },
+    {
+      "id": "9998",
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "/works/OL85891W",
+      "bookTitle": "The Jewel of Seven Stars"
     }
   ]
 }

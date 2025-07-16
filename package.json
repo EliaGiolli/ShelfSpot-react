@@ -6,7 +6,7 @@
   "proxy": "http://localhost:5000",
   "scripts": {
     "dev": "vite",
-    "server": "json-server --watch src/api/db.json --port 5000",
+    "server": "json-server --watch api/db.json --port 5000",
     "build": "vite build",
     "lint": "eslint .",
     "test": "vitest",
