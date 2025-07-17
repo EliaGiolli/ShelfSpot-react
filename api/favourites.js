@@ -3,54 +3,64 @@ import { join } from 'path';
 
 // This handler manages GET, POST, and DELETE requests for favourites
 export default async function handler(req, res) {
-  // Build the path to the db.json file
-  const dbPath = join(process.cwd(), 'api', 'db.json');
-  // Read and parse the database
-  const db = JSON.parse(readFileSync(dbPath, 'utf-8'));
+  try {
+    const dbPath = join(process.cwd(), 'api', 'db.json');
+    const db = JSON.parse(readFileSync(dbPath, 'utf-8'));
 
-  // For non-GET requests, manually parse the request body (Vercel serverless workaround)
-  if (req.method !== 'GET') {
-    await new Promise((resolve) => {
-      let body = '';
-      req.on('data', (chunk) => {
-        body += chunk;
+    // For non-GET requests, manually parse the request body (Vercel serverless workaround)
+    if (req.method !== 'GET') {
+      await new Promise((resolve) => {
+        let body = '';
+        req.on('data', (chunk) => {
+          body += chunk;
+        });
+        req.on('end', () => {
+          try {
+            req.body = body ? JSON.parse(body) : {};
+          } catch (e) {
+            req.body = {};
+          }
+          resolve();
+        });
       });
-      req.on('end', () => {
-        req.body = body ? JSON.parse(body) : {};
-        resolve();
-      });
-    });
-  }
-
-  // Handle GET request: return all favourites or favourites for a specific user
-  if (req.method === 'GET') {
-    const { userId } = req.query;
-    if (userId) {
-      // Filter favourites by userId
-      const favourites = db.favourites.filter(f => f.userId === userId);
-      res.status(200).json(favourites);
-    } else {
-      // Return all favourites
-      res.status(200).json(db.favourites);
     }
-  } else if (req.method === 'POST') {
-    // Handle POST request: add a new favourite
-    const newFavourite = req.body;
-    db.favourites.push(newFavourite);
-    // Save the updated database
-    writeFileSync(dbPath, JSON.stringify(db, null, 2));
-    // Respond with the new favourite
-    res.status(201).json(newFavourite);
-  } else if (req.method === 'DELETE') {
-    // Handle DELETE request: remove a favourite by id
-    const { id } = req.query;
-    db.favourites = db.favourites.filter(f => f.id !== id);
-    // Save the updated database
-    writeFileSync(dbPath, JSON.stringify(db, null, 2));
-    // Respond with no content
-    res.status(204).end();
-  } else {
-    // Method not allowed for this endpoint
-    res.status(405).json({ message: 'Method not allowed' });
+
+    if (req.method === 'GET') {
+      const { userId } = req.query;
+      if (userId) {
+        const favourites = db.favourites.filter(f => f.userId === userId);
+        res.status(200).json(favourites);
+      } else {
+        res.status(200).json(db.favourites);
+      }
+    } else if (req.method === 'POST') {
+      const newFavourite = req.body;
+      // Check if newFavourite is valid
+      if (!newFavourite || !newFavourite.id) {
+        return res.status(400).json({ message: 'Invalid favourite data' });
+      }
+      db.favourites.push(newFavourite);
+      // Try to write (will fail in production, but at least you get a clear error)
+      try {
+        writeFileSync(dbPath, JSON.stringify(db, null, 2));
+      } catch (e) {
+        return res.status(500).json({ message: 'Write failed (read-only file system on Vercel)', error: e.message });
+      }
+      res.status(201).json(newFavourite);
+    } else if (req.method === 'DELETE') {
+      const { id } = req.query;
+      db.favourites = db.favourites.filter(f => f.id !== id);
+      try {
+        writeFileSync(dbPath, JSON.stringify(db, null, 2));
+      } catch (e) {
+        return res.status(500).json({ message: 'Write failed (read-only file system on Vercel)', error: e.message });
+      }
+      res.status(204).end();
+    } else {
+      res.status(405).json({ message: 'Method not allowed' });
+    }
+  } catch (error) {
+    // Always return JSON on error
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 }
