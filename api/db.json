@@ -90,7 +90,8 @@
       "lastName": "Bianchi",
       "bookId": "77",
       "bookTitle": "History of the Decline and Fall of the Roman Empire Complete and Unabridged",
-      "loanDate": "2025-06-27T12:18:44.957Z"
+      "loanDate": "2025-06-27T12:18:44.957Z",
+      "returnDate": "2025-07-17T12:49:24.266Z"
     },
     {
       "id": "b364",
@@ -190,6 +191,14 @@
       "lastName": "Bianchi",
       "bookId": "/works/OL8127201W",
       "bookTitle": "The King in Yellow"
+    },
+    {
+      "id": "7650",
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "/works/OL138052W",
+      "bookTitle": "Alice's Adventures in Wonderland"
     }
   ]
 }

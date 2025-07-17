@@ -10,9 +10,7 @@ import { logout } from '../features/auth/authReducer';
 import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-
 function Navbar() {
-
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,25 +34,26 @@ function Navbar() {
   return (
     <nav
       className={`${navBg} flex justify-around items-center w-full max-h-20 border-b-2 sticky top-0 z-50 px-4 py-6`}
-      aria-label='primary-navigation'
+      aria-label='Primary navigation'
+      role="navigation"
     >
       {/* Desktop menu */}
-      <Link to='/home' className={`font-bold text-3xl ${linkText} hidden md:block`}>
+      <Link to='/home' className={`font-bold text-3xl ${linkText} hidden md:block`} tabIndex={0} aria-label="ShelfSpot Home">
         ShelfSpot
       </Link>
       <ul className='hidden md:flex items-center text-center text-2xl gap-x-8'>
         <li>
-          <NavLink to='/home' className={({ isActive }) => navLink(isActive)}>
+          <NavLink to='/home' className={({ isActive }) => navLink(isActive)} aria-label="Home page">
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to='/books' className={({ isActive }) => navLink(isActive)}>
+          <NavLink to='/books' className={({ isActive }) => navLink(isActive)} aria-label="Books page">
             Books
           </NavLink>
         </li>
         <li>
-          <NavLink to='/loans' className={({ isActive }) => navLink(isActive)}>
+          <NavLink to='/loans' className={({ isActive }) => navLink(isActive)} aria-label="Borrow a book page">
             Borrow a book
           </NavLink>
         </li>
@@ -64,9 +63,9 @@ function Navbar() {
         <MobileNavMenu />
         {/* Theme toggler button */}
         <ThemeSwitch />
-          {/* Logout button */}
-        <Button onClick={handleLogout}>
-           <LogOut />   
+        {/* Logout button */}
+        <Button onClick={handleLogout} aria-label="Log out">
+           <LogOut aria-hidden="true" />   
         </ Button>
       </section>
     </nav>

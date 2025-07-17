@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { useTheme } from '../custom hooks/useTheme';
 
 export function MobileNavMenu() {
-
   const theme = useTheme();
   // Theme-based classes
   const menuBg = theme === 'light' ? 'bg-amber-800' : 'bg-slate-900';
@@ -16,22 +15,23 @@ export function MobileNavMenu() {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild>
+      <DropdownMenu.Trigger asChild aria-label="Open mobile navigation menu">
         <button
           className={`${button} md:hidden inline-flex items-center justify-center rounded-full p-2 shadow focus:outline-none focus:ring-2`}
           aria-label="Toggle navigation menu"
         >
-          <HamburgerMenuIcon className="w-6 h-6" />
+          <HamburgerMenuIcon className="w-6 h-6" aria-hidden="true" />
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           className={`z-50 min-w-[180px] rounded-md ${menuBg} p-4 shadow-lg flex flex-col gap-4`}
           sideOffset={22}
+          aria-label="Mobile navigation menu"
         >
-          <NavLink to="/home" className={({ isActive }) => isActive ? linkActive : link}>Home</NavLink>
-          <NavLink to="/books" className={({ isActive }) => isActive ? linkActive : link}>Books</NavLink>
-          <NavLink to="/loans" className={({ isActive }) => isActive ? linkActive : link}>Borrow a book</NavLink>
+          <NavLink to="/home" className={({ isActive }) => isActive ? linkActive : link} aria-label="Home page">Home</NavLink>
+          <NavLink to="/books" className={({ isActive }) => isActive ? linkActive : link} aria-label="Books page">Books</NavLink>
+          <NavLink to="/loans" className={({ isActive }) => isActive ? linkActive : link} aria-label="Borrow a book page">Borrow a book</NavLink>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

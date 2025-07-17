@@ -7,8 +7,8 @@ const LabelDemo = ({ className, handleInputChange, searchTerm }: InputProps) => 
 
     const inputClass =
         theme === 'light'
-            ? "inline-flex h-[35px] w-[200px] appearance-none items-center justify-center rounded bg-gray-50 hover:bg-amber-100 px-2.5 text-[15px] leading-none text-gray-900 shadow shadow-gray-300 outline-amber-500 focus:shadow-gray-400 border-2 border-amber-200"
-            : "inline-flex h-[35px] w-[200px] appearance-none items-center justify-center rounded bg-slate-800 hover:bg-slate-700 px-2.5 text-[15px] leading-none text-yellow-100 shadow shadow-zinc-900 outline-yellow-400 focus:shadow-yellow-900 border-2 border-slate-700";
+            ? "inline-flex h-[35px] w-[200px] appearance-none items-center justify-center rounded bg-gray-50 hover:bg-amber-100 px-2.5 text-[15px] leading-none text-gray-900 shadow shadow-gray-300 outline-amber-500 focus:shadow-gray-400 border-2 border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            : "inline-flex h-[35px] w-[200px] appearance-none items-center justify-center rounded bg-slate-800 hover:bg-slate-700 px-2.5 text-[15px] leading-none text-yellow-100 shadow shadow-zinc-900 outline-yellow-400 focus:shadow-yellow-900 border-2 border-slate-700 focus:outline-none focus:ring-2 focus:ring-yellow-400";
 
     const labelClass =
         theme === 'light'
@@ -19,16 +19,18 @@ const LabelDemo = ({ className, handleInputChange, searchTerm }: InputProps) => 
         <div className="flex flex-wrap justify-center items-center gap-[15px] px-5">
             <Label.Root
                 className={labelClass}
-                htmlFor="Book genre"
+                htmlFor="BookGenreInput"
             >
                 Type here the book genre
             </Label.Root>
             <input
                 className={inputClass}
                 type="text"
-                id="Book genre"
+                id="BookGenreInput"
                 value={searchTerm}
                 onChange={handleInputChange}
+                aria-label="Book genre"
+                tabIndex={0}
             />
         </div>
     );
