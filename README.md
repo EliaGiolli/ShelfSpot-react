@@ -1,6 +1,6 @@
-# 📚 Search4YourBook
+# 📚 Shelfspot - React and Typescript
 
-Search4YourBook is a modern web application that allows users to explore and manage books through the OpenLibrary API. Built with React, TypeScript, and Tailwind CSS, it provides a seamless experience for book enthusiasts to discover, save, and borrow their favorite reads.
+ShelfSpot is a modern web application that allows users to explore and manage books through the OpenLibrary API. Built with React, TypeScript, and Tailwind CSS, it provides a seamless experience for book enthusiasts to discover, save, and borrow their favorite reads.
 
 ## 🚀 Features
 
@@ -20,7 +20,7 @@ Search4YourBook is a modern web application that allows users to explore and man
 - **Routing**: React Router v7
 - **Styling**: Tailwind CSS v4
 - **API Integration**: Axios, Redux Toolkit Query
-- **Form Handling**: React Hook Form
+- **Form Handling**: React Hook Form and Zod
 - **UI Components**: Radix UI
 - **Testing**: Vitest, @testing-library/react, @testing-library/user-event, @testing-library/jest-dom
 - **Development**: Vite
@@ -154,4 +154,52 @@ This project is licensed under the MIT License.
 **Elia Giolli**
 - GitHub: [@EliaGiolli](https://github.com/EliaGiolli)
 - LinkedIn: [Elia Giolli](https://www.linkedin.com/in/eliagiolli/)
+
+## Local Development
+
+This project is frontend-only. To test features like login, favourites, and loans, you need to run a mock API server locally.
+
+### 1. Start the mock API (json-server)
+
+```bash
+cd api
+npx json-server --watch db.json --port 3001
+```
+
+### 2. Start the frontend
+
+```bash
+npm install
+npm run dev
+```
+
+### 3. Configure the frontend to use the local API
+
+Make sure your `.env` file contains:
+
+```
+VITE_API_BASE_URL=http://localhost:3001/
+```
+
+---
+
+**Note:**  
+The deployed version on Vercel is frontend-only and does not support backend features.  
+For full functionality, always run the mock API locally as described above.
+
+---
+
+## Why this is a good move
+
+- **Simplicity:** No more serverless headaches or fake persistence.
+- **Beginner-friendly:** Anyone can clone and run locally, no cloud config needed.
+- **Transparency:** You’re honest about the project’s scope and limitations.
+
+---
+
+If you want, I can help you:
+- Clean up the repo (remove serverless files, update `.env`, etc.)
+- Write or update the README with clear instructions
+
+Just let me know what you want to do next!
 

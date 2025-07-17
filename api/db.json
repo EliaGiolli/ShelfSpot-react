@@ -109,7 +109,8 @@
       "lastName": "Bianchi",
       "bookId": "1",
       "bookTitle": "Ranma 1/2",
-      "loanDate": "2025-07-16T20:02:42.656Z"
+      "loanDate": "2025-07-16T20:02:42.656Z",
+      "returnDate": "2025-07-17T12:31:28.529Z"
     }
   ],
   "favourites": [
@@ -181,6 +182,14 @@
       "lastName": "Bianchi",
       "bookId": "/works/OL85891W",
       "bookTitle": "The Jewel of Seven Stars"
+    },
+    {
+      "id": "e989",
+      "userId": "2",
+      "userName": "Mario",
+      "lastName": "Bianchi",
+      "bookId": "/works/OL8127201W",
+      "bookTitle": "The King in Yellow"
     }
   ]
 }
