@@ -1,4 +1,4 @@
-import { screen, render } from "@testing-library/react"
+import { screen, render, getByAltText } from "@testing-library/react"
 import UserEvent from "@testing-library/user-event"
 import { expect,test,describe, vi, beforeEach } from 'vitest'
 import { MemoryRouter } from "react-router"
@@ -49,7 +49,22 @@ describe('while routing every link has the correct class', () => {
     });
 });
 
+describe('the main elements are correctly displayed in the UI', async () => {
+    test('the logo and the link are displayed inside the navbar', () => {
 
+        render(
+             <MemoryRouter initialEntries={["/books"]}>
+                <Provider store={store} >
+                    <Navbar />
+                </Provider>
+            </MemoryRouter>
+        );
+        const links = screen.getAllByRole('link');
+        const homeNavLink = links.find(link => link.getAttribute('aria-label') === 'Home page');
+        expect(homeNavLink).toBeInTheDocument();
+        expect(screen.getByRole('link', {name: /books/i})).toBeInTheDocument();
+    })
+})
 
 describe('test dark/light theme', () => {
 
